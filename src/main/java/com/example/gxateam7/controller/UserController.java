@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
             System.out.println("登录"+username+":"+password);
             return  "success";
         }
-
         //查询个人信息
         @RequestMapping(value = "/findById",method = RequestMethod.GET)//getpost
         public  String  findById(Integer userId){
@@ -34,7 +33,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
             System.out.println("修改密码"+userId);
             return  "success";
         }
-
-
     }
 
