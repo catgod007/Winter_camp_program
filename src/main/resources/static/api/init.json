@@ -1,0 +1,100 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "/page/welcome.html?t=1"
+  },
+  "logoInfo": {
+    "title": "冬令营",
+    "image": "/images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "设置",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_setting",
+          "child": [
+            {
+              "title": "科目设置",
+              "href": "/page/setting/subject.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "凭证字",
+              "href": "/page/setting/vfs_info.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "币别",
+              "href": "/page/setting/money_type.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "XX",
+              "href": "/page/xx.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "权限",
+          "icon": "fa fa-lemon-o",
+          "href": "",
+          "target": "_self",
+          "child": [
+            {
+              "title": "部门管理",
+              "href": "/page/power/department.html",
+              "icon": "fa fa-dot-circle-o",
+              "target": "_self"
+            },
+            {
+              "title": "用户管理",
+              "href": "/page/power/user.html",
+              "icon": "fa fa-adn",
+              "target": "_self"
+            },
+            {
+              "title": "角色管理",
+              "href": "/page/power/role.html",
+              "icon": "fa fa-dashboard",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "个人信息",
+          "icon": "fa fa-lemon-o",
+          "href": "",
+          "target": "_self",
+          "child": [
+            {
+              "title": "个人信息",
+              "href": "/page/self/show_self_info.html",
+              "icon": "fa fa-dot-circle-o",
+              "target": "_self"
+            },
+            {
+              "title": "修改密码",
+              "href": "/page/self/change_password.html",
+              "icon": "fa fa-adn",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+
+}

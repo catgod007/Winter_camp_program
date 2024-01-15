@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 2,
+  "data": [
+    {
+      "userId": 1,
+      "username": "韩梅梅",
+      "email": "24235@qqc.om",
+      "phone": "35435345",
+      "deptName": "人事部"
+    },
+    {
+      "userId": 2,
+      "username": "张三",
+      "email": "24235@qqc.om",
+      "phone": "35435345",
+      "deptName": "研发部"
+    },
+    {
+      "userId": 3,
+      "username": "李四",
+      "email": "24235@qqc.om",
+      "phone": "35435345",
+      "deptName": "测试部"
+    }
+      ]
+}

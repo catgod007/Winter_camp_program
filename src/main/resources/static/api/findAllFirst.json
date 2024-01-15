@@ -1,0 +1,19 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 19,
+  "data": [
+    {
+      "druTypId": 1,
+      "druTypName": "处方药"
+    },
+    {
+      "druTypId": 2,
+      "druTypName": "抗生素用药"
+    },
+    {
+      "druTypId": 3,
+      "druTypName": "心血管用药"
+    }
+  ]
+}

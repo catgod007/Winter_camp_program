@@ -1,0 +1,31 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 4,
+  "data": [
+    {
+      "deptId": 1,
+      "deptName": "董事部",
+      "deptParentName": "无",
+      "username": "王玉乾"
+    },
+    {
+      "deptId": 2,
+      "deptName": "测试部",
+      "deptParentName": "董事部",
+      "username": "芜湖"
+    },
+    {
+      "deptId": 3,
+      "deptName": "研发部",
+      "deptParentName": "董事部",
+      "username": "流星雨"
+    },
+    {
+      "deptId": 4,
+      "deptName": "人事部",
+      "deptParentName": "董事部",
+      "username": "韩梅梅"
+    }
+      ]
+}

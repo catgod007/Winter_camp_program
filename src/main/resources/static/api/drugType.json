@@ -1,0 +1,73 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 19,
+  "data": [
+    {
+      "druTypId": 1,
+      "druTypName": "处方药",
+      "druTypParentId": -1,
+      "druTypOrder": 1
+    },
+    {
+      "druTypId": 2,
+      "druTypName": "抗生素用药",
+      "druTypParentId": 1,
+      "druTypOrder": 1
+    },
+    {
+      "druTypId": 3,
+      "druTypName": "心血管用药",
+      "druTypParentId": 1,
+      "druTypOrder": 2
+    },
+    {
+      "druTypId": 4,
+      "druTypName": "非处方药",
+      "druTypParentId": -1,
+      "druTypOrder": 2
+    },
+    {
+      "druTypId": 5,
+      "druTypName": "五官科用药",
+      "druTypParentId": 4,
+      "druTypOrder": 1
+    },
+    {
+      "druTypId": 5,
+      "druTypName": "妇科用药",
+      "druTypParentId": 4,
+      "druTypOrder": 2
+    },
+    {
+      "druTypId": 6,
+      "druTypName": "清热消毒用品",
+      "druTypParentId": 4,
+      "druTypOrder": 3
+    },
+    {
+      "druTypId": 7,
+      "druTypName": "外敷用药",
+      "druTypParentId": 4,
+      "druTypOrder": 4
+    },
+    {
+      "druTypId": 8,
+      "druTypName": "正红花油",
+      "druTypParentId": 7,
+      "druTypOrder": 1
+    },
+    {
+      "druTypId": 9,
+      "druTypName": "青草膏",
+      "druTypParentId": 7,
+      "druTypOrder": 2
+    },
+    {
+      "druTypId": 10,
+      "druTypName": "抗过敏用药",
+      "druTypParentId": 4,
+      "druTypOrder": 5
+    }
+  ]
+}
