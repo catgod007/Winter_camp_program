@@ -1,4 +1,4 @@
-package com.example.gxateam7.service.impl;
+package com.example.gxateam7.service;
 
 /**
  * 万事顺意
