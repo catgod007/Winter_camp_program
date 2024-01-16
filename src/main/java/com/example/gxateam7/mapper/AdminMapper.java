@@ -1,6 +1,6 @@
 package com.example.gxateam7.mapper;
 
-import com.example.gxateam7.entity.User;
+import com.example.gxateam7.entity.Admin;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,8 +13,8 @@ import org.apache.ibatis.annotations.Param;
  */
 
 @Mapper
-public interface UserMapper {
-    User loginEmail(@Param("email") String email, @Param("password")String password);
+public interface AdminMapper {
+    Admin loginEmail(@Param("email") String email, @Param("password")String password);
 
-    User loginPhone(String phone, String password);
+    Admin loginPhone(String phone, String password);
 }

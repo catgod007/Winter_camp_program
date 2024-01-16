@@ -1,10 +1,9 @@
 package com.example.gxateam7.service.impl;
 
-import com.example.gxateam7.entity.User;
-import com.example.gxateam7.mapper.UserMapper;
+import com.example.gxateam7.mapper.AdminMapper;
+import com.example.gxateam7.service.AdminService;
 import com.example.gxateam7.utils.model.R;
 import com.example.gxateam7.utils.model.ResultCodeEnum;
-import com.example.gxateam7.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,24 +16,24 @@ import javax.annotation.Resource;
  * Version: V1.0
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class AdminServiceImpl implements AdminService {
     @Resource
-    private UserMapper userMapper;
+    private AdminMapper adminMapper;
     @Override
     public R login(String username, String password) {
-        User user=null;
+        com.example.gxateam7.entity.Admin admin = null;
         //业务判断
         if(username.contains("@")){
             //用的邮箱
-            user=userMapper.loginEmail(username,password);
+            admin=adminMapper.loginEmail(username,password);
         }else{
             //手机号
-            user=userMapper.loginPhone(username,password);
+            admin=adminMapper.loginPhone(username,password);
         }
 
-        if(user==null){
+        if(admin==null){
             return  R.error(ResultCodeEnum.LOGIN_ERROR);
         }
-        return R.ok().data(user);
+        return R.ok().data(admin);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.gxateam7.controller;
 
 import com.example.gxateam7.utils.model.R;
-import com.example.gxateam7.service.UserService;
+import com.example.gxateam7.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,18 +18,18 @@ import javax.annotation.Resource;
  * Description:
  */
     @Controller
-    @RequestMapping("/user")
-    public class UserController {
+    @RequestMapping("/admin")
+    public class adminController {
         //这里请求路径
         @Resource   //  @Autowired
-        private UserService userService;
+        private AdminService adminService;
     //这里请求路径
     @RequestMapping(value = "/login",method = RequestMethod.POST)//getpost
     @ResponseBody//把返回的数据转换为json数据格式 否则都认为返回的数据是string
     public R login(String username, String password){//返回一个结果集类
         System.out.println("登录"+username+":"+password);
         //判断 controller 调用service
-        R r=userService.login(username,password);
+        R r=adminService.login(username,password);
         return   r;
     }
 //        @RequestMapping(value = "/login",method = RequestMethod.POST)//getpost

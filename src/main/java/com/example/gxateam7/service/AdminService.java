@@ -9,6 +9,6 @@ import com.example.gxateam7.utils.model.R;
  * Date: 2024/01/1510:05
  * Description:
  */
-public interface UserService {
+public interface AdminService {
     R login(String username, String password);
 }
