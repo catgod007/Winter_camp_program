@@ -32,6 +32,11 @@ import javax.annotation.Resource;
         R r=userService.login(username,password);
         return   r;
     }
+//        @RequestMapping(value = "/login",method = RequestMethod.POST)//getpost
+//        public  String  login(String username,String password){
+//            System.out.println("登录"+username+":"+password);
+//            return  "success";
+//        }
         //查询个人信息
         @RequestMapping(value = "/findById",method = RequestMethod.GET)//getpost
         public  String  findById(Integer userId){
