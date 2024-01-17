@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理员</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <!--搜索表单 用户名字 手机号  部门-->
+        <fieldset class="table-search-fieldset">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">管理员名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="deptName" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+        <!--表格头部工具-->
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">
+                    <i class="layui-icon layui-icon-add-circle"></i>添加管理员 </button>
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="delBatch">
+                    <i class="layui-icon layui-icon-add-circle"></i>批量删除 </button>
+            </div>
+        </script>
+        <!--表格-->
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <!--表格内部工具-->
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+        <!--添加修改页面-->
+        <div style="display: none" id="edit">
+            <!--  <form class="layui-form"  lay-filter="drug-filter"  >
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">药品类型</label>
+                      <div class="layui-input-block">
+                          <select name="druTypId">
+                              <option>&#45;&#45;请选择&#45;&#45;</option>
+                              <option value="1">抗生素用药</option>
+                              <option value="2">心血管用药</option>
+                              <option value="3">消化系统用药</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">药品状态</label>
+                      <div class="layui-input-block">
+                          <select name="druState">
+                              <option value="0">有效</option>
+                              <option value="1">无效</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">药品名称</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="druName"  autocomplete="off" placeholder="请输入药品名称" class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">药品编号</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="druNo"  autocomplete="off"  class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">条形码</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="druCore"  autocomplete="off"  class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">型号</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="druModel"  autocomplete="off"  class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">单位</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="druUnit"  autocomplete="off"  class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">数量</label>
+                      <div class="layui-input-block">
+                          <input type="number" name="druInventoryQuantity"  autocomplete="off"  class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">供应商</label>
+                      <div class="layui-input-block">
+                          <select name="supId">
+                              <option>&#45;&#45;请选择&#45;&#45;</option>
+                              <option value="1">美林制药</option>
+                              <option value="2">云南白药</option>
+                              <option value="3">香港制药</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">客户单价</label>
+                      <div class="layui-input-block">
+                          <input type="number" name="druCustomerPrice"  autocomplete="off"  class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">成本价</label>
+                      <div class="layui-input-block">
+                          <input type="number" name="dru_price"  autocomplete="off"  class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">特价</label>
+                      <div class="layui-input-block">
+                          <input type="number" name="druSpecialPrice"  autocomplete="off"  class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">是否销售</label>
+                      <div class="layui-input-block">
+                          <input type="checkbox" checked="" name="dru_sale" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                      </div>
+                  </div>
+                  <div class="layui-form-item layui-form-text">
+                      <label class="layui-form-label">药品描述</label>
+                      <div class="layui-input-block">
+                          <textarea name="druNotes" placeholder="请输入内容" class="layui-textarea"></textarea>
+                      </div>
+                  </div>
+                  <div class="layui-upload-drag" id="test10">
+                      <i class="layui-icon"></i>
+                      <p>点击上传，或将文件拖拽到此处</p>
+                      <div class="layui-hide" id="uploadDemoView">
+                          <hr>
+                          <img src="" alt="上传成功后渲染" style="max-width: 196px">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <div class="layui-input-block">
+                          <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                      </div>
+                  </div>
+              </form>-->
+        </div>
+    </div>
+</div>
+<script src="/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table','upload'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            upload=layui.upload,
+            table = layui.table;
+        //表格的信息字段所在处
+        table.render({
+            elem: '#currentTableId',
+            url: '/api/department.json',//department.json 模仿后端返回得结果集
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            //
+            cols: [[
+                {type: "checkbox", width: 50},
+                {field: 'deptId', width: 120, title: '部门编号'},
+                {field: 'deptName', width:140, title: '部门名'},
+                {field: 'deptParentName', width: 140, title: '父级名称'},
+                {field: 'username', title: '负责人', width: 120},
+                {title: '操作', minWidth: 140, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10,50, 100],
+            limit: 10,
+            page: true,
+            skin: 'line'
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = JSON.stringify(data.field);
+            layer.alert(result, {
+                title: '最终的搜索信息'
+            });
+
+            //执行搜索重载
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                , where: {
+                    searchParams: result
+                }
+            }, 'data');
+
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'add') {  // 监听添加操作
+                //把当前隐藏的div进行窗口展示
+                var index = layer.open({
+                    title: '添加药品',
+                    type: 1,
+                    shade: 0.2,
+                    area: ['600px', '500px'],
+                    maxmin:true,
+                    content: $("#edit")
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            } else if (obj.event === 'down') {  // 监听删除操作
+                console.log("导出所有查询的数据");
+                layer.alert(JSON.stringify(data));
+            }
+        });
+        //监听表格里面的工具
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;//获取这一行的数据  被点击的的这一行
+            //先给表单赋值  名字不一致一个个赋值
+            /* form.val("drug-filter",{
+                 "druNo":data.druNo,
+                 "druName":data.druName
+             });*/
+            //设置表单所以表单元素的值
+            form.val("drug-filter",data);
+            //img  单独设置
+            layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', data.druImgPath);
+            //修改  打开新的窗口 进行信息编辑
+            if (obj.event === 'edit') {
+                var index = layer.open({
+                    title: '编辑用户',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['100%', '100%'],
+                    content: $("#edit")
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
+            } else if (obj.event === 'delete') {//删除的当前
+                layer.confirm('真的删除行么', function (index) {
+                    //先请求后端做删除操作
+                    obj.del();//假删 页面刷新数据回来了
+                    layer.close(index);
+                });
+            }
+        });
+
+
+        //拖拽上传
+        upload.render({
+            elem: '#test10'
+            ,url: 'https://httpbin.org/post' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+            ,done: function(res){
+                layer.msg('上传成功');
+                layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+                console.log(res)
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
