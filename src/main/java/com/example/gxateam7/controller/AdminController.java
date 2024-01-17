@@ -19,7 +19,7 @@ import javax.annotation.Resource;
  */
     @Controller
     @RequestMapping("/admin")
-    public class adminController {
+    public class AdminController {
         //这里请求路径
         @Resource   //  @Autowired
         private AdminService adminService;

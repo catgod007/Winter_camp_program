@@ -21,7 +21,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">管理员名称</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="deptName" autocomplete="off" class="layui-input">
+                                <input type="text" name="userName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -174,7 +174,7 @@
         //表格的信息字段所在处
         table.render({
             elem: '#currentTableId',
-            url: '/api/department.json',//department.json 模仿后端返回得结果集
+            url: '/admin/findByPage',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -184,10 +184,14 @@
             //
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'deptId', width: 120, title: '部门编号'},
-                {field: 'deptName', width:140, title: '部门名'},
-                {field: 'deptParentName', width: 140, title: '父级名称'},
-                {field: 'username', title: '负责人', width: 120},
+                {field: 'id', width: 120, title: '编号'},
+                {field: 'userName', width:140, title: '名字'},
+                {field: ' nickName', width: 140, title: '昵称'},
+                {field: 'phone', width: 140, title: '手机号码'},
+                {field: 'email', title: '邮箱', width: 120},
+                {field: 'roleId', title: '角色ID', width: 120},
+                {field: 'roleName', title: '角色名称', width: 120},
+                {field: 'sex', title: '性别', width: 120},
                 {title: '操作', minWidth: 140, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10,50, 100],

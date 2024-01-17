@@ -1,5 +1,6 @@
 package com.example.gxateam7.service;
 
+import com.example.gxateam7.entity.dto.AdminQueryDto;
 import com.example.gxateam7.utils.model.R;
 
 /**
@@ -11,4 +12,6 @@ import com.example.gxateam7.utils.model.R;
  */
 public interface AdminService {
     R login(String username, String password);
+
+    R findByPage(AdminQueryDto queryDto);
 }

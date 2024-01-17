@@ -1,5 +1,8 @@
 package com.example.gxateam7.service.impl;
 
+import com.example.gxateam7.entity.dto.AdminQueryDto;
+import com.example.gxateam7.entity.pojo.Admin;
+import com.example.gxateam7.entity.vo.AdminQueryVo;
 import com.example.gxateam7.mapper.AdminMapper;
 import com.example.gxateam7.service.AdminService;
 import com.example.gxateam7.utils.model.R;
@@ -7,6 +10,7 @@ import com.example.gxateam7.utils.model.ResultCodeEnum;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * the early bird catches the worm.
@@ -21,7 +25,7 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
     @Override
     public R login(String username, String password) {
-        com.example.gxateam7.entity.Admin admin = null;
+        Admin admin = null;
         //业务判断
         if(username.contains("@")){
             //用的邮箱
@@ -35,5 +39,19 @@ public class AdminServiceImpl implements AdminService {
             return  R.error(ResultCodeEnum.LOGIN_ERROR);
         }
         return R.ok().data(admin);
+    }
+
+    @Override
+    public R findByPage(AdminQueryDto queryDto) {
+        //分页 推出起始页数
+        queryDto.setPage((queryDto.getPage()-1)*queryDto.getLimit());
+        //符合条件的总条数
+        Long count=adminMapper.findCount(queryDto);
+        if(count>0) {
+            //查询当前页数据
+            List<AdminQueryVo> adminList = adminMapper.findByPage(queryDto);
+            return R.ok().data(adminList).count(count);
+        }
+        return  R.ok().count(0L).message("没有满足条件的数据");
     }
 }

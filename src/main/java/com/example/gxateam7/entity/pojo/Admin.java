@@ -1,11 +1,11 @@
-package com.example.gxateam7.entity;
+package com.example.gxateam7.entity.pojo;
 
 
 public class Admin {
   private Integer id;
-  private String username;
+  private String userName;
   private String userpass;
-  private String nickname;
+  private String nickName;
   private Integer roleId;
   private String roleName;
   private String sex;
@@ -22,11 +22,11 @@ public class Admin {
 
 
   public String getUsername() {
-    return username;
+    return userName;
   }
 
   public void setUsername(String username) {
-    this.username = username;
+    this.userName = username;
   }
 
 
@@ -40,11 +40,11 @@ public class Admin {
 
 
   public String getNickname() {
-    return nickname;
+    return nickName;
   }
 
   public void setNickname(String nickname) {
-    this.nickname = nickname;
+    this.nickName = nickname;
   }
 
 
