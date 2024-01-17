@@ -2,7 +2,6 @@ package com.example.gxateam7.entity;
 
 
 public class Admin {
-
   private Integer id;
   private String username;
   private String userpass;
@@ -12,7 +11,6 @@ public class Admin {
   private String sex;
   private String phone;
   private String email;
-
 
   public Integer getId() {
     return id;
