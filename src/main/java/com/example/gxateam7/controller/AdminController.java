@@ -1,23 +1,15 @@
 package com.example.gxateam7.controller;
 
+import com.example.gxateam7.entity.dto.AdminQueryDto;
+import com.example.gxateam7.entity.pojo.Admin;
+import com.example.gxateam7.entity.vo.AdminQueryVo;
 import com.example.gxateam7.utils.model.R;
 import com.example.gxateam7.service.AdminService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-
-/**
- * 万事顺意
- * Created with IntelliJ IDEA.
- * User: zwj
- * Date: 2024/01/159:40
- * Description:
- */
-    @Controller
+    @RestController
     @RequestMapping("/admin")
     public class AdminController {
         //这里请求路径
@@ -25,7 +17,7 @@ import javax.annotation.Resource;
         private AdminService adminService;
     //这里请求路径
     @RequestMapping(value = "/login",method = RequestMethod.POST)//getpost
-    @ResponseBody//把返回的数据转换为json数据格式 否则都认为返回的数据是string
+//    @ResponseBody//把返回的数据转换为json数据格式 否则都认为返回的数据是string
     public R login(String username, String password){//返回一个结果集类
         System.out.println("登录"+username+":"+password);
         //判断 controller 调用service
@@ -44,5 +36,31 @@ import javax.annotation.Resource;
             System.out.println("修改密码"+userId);
             return  "success";
         }
+        @GetMapping("/findByPage")
+        public R findByPage(AdminQueryDto queryDto) {
+            //调用Service
+            R r = adminService.findByPage(queryDto);
+            return r;
+        }
+        @PostMapping("/save")
+        public  R  save(Admin admin){
+            return adminService.save(admin);
+        }
+        @PostMapping("/update")
+        public  R  update(Admin  admin){
+            return adminService.update(admin);
+        }
+
+        @GetMapping("/delById")
+        public R  delById(Integer id){
+            return adminService.delById(id);
+        }
+        @PostMapping("/delBatch")
+        public  R delBatch( String arrStr){
+            System.out.println(arrStr);
+            return adminService.delBatch(arrStr);
+        }
+
+
     }
 

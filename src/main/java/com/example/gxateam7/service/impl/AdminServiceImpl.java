@@ -54,4 +54,43 @@ public class AdminServiceImpl implements AdminService {
         }
         return  R.ok().count(0L).message("没有满足条件的数据");
     }
+
+    @Override
+    public R save(Admin admin) {
+        int row= adminMapper.save(admin);
+        if(row>0){
+            return  R.ok();
+        }
+        return R.error(ResultCodeEnum.UNKNOWN_REASON);
+    }
+
+    @Override
+    public R update(Admin admin) {
+        int row= adminMapper.update(admin);
+        if(row>0){
+            return  R.ok();
+        }
+        return R.error(ResultCodeEnum.UNKNOWN_REASON);
+    }
+
+    @Override
+    public R delById(Integer id) {
+        int row = adminMapper.delById(id);
+        if (row > 0) {
+            return R.ok();
+        }
+        return R.error(ResultCodeEnum.UNKNOWN_REASON);
+
+    }
+
+    @Override
+    public R delBatch(String arrStr) {
+        int row = adminMapper.delBatch(arrStr);
+        if (row > 0) {
+            return R.ok();
+        }
+        return R.error(ResultCodeEnum.UNKNOWN_REASON);
+    }
+
+
 }

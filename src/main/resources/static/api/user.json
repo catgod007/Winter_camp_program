@@ -1,28 +1,57 @@
 {
   "code": 0,
   "msg": "",
-  "count": 2,
+  "count": 20,
   "data": [
     {
-      "userId": 1,
-      "username": "韩梅梅",
-      "email": "24235@qqc.om",
-      "phone": "35435345",
-      "deptName": "人事部"
+      "id": 1,
+      "userName": "靠湖",
+      "nickName": "11",
+      "roleId": 1,
+      "roleName": "教师",
+      "sex": "男",
+      "phone": "12344567876",
+      "email": "1233432@qq.com"
     },
     {
-      "userId": 2,
-      "username": "张三",
-      "email": "24235@qqc.om",
-      "phone": "35435345",
-      "deptName": "研发部"
+      "id": 2,
+      "userName": "湖",
+      "nickName": "11",
+      "roleId": 1,
+      "roleName": "教师",
+      "sex": "男",
+      "phone": "12344567876",
+      "email": "1233432@qq.com"
     },
     {
-      "userId": 3,
-      "username": "李四",
-      "email": "24235@qqc.om",
-      "phone": "35435345",
-      "deptName": "测试部"
+      "id": 3,
+      "userName": "靠",
+      "nickName": 311,
+      "roleId": 1,
+      "roleName": "教师",
+      "sex": "男",
+      "phone": "12344567876",
+      "email": "1233432@qq.com"
+    },
+    {
+      "id": 4,
+      "userName": "vghj",
+      "nickName": "141",
+      "roleId": 1,
+      "roleName": "教师",
+      "sex": "男",
+      "phone": "12344567876",
+      "email": "1233432@qq.com"
+    },
+    {
+      "id": 5,
+      "userName": "bj",
+      "nickName": "115",
+      "roleId": 1,
+      "roleName": "教师",
+      "sex": "男",
+      "phone": "12344567876",
+      "email": "1233432@qq.com"
     }
-      ]
+  ]
 }

@@ -18,11 +18,18 @@ import java.util.List;
 
 @Mapper
 public interface AdminMapper {
+    //登录
     Admin loginEmail(@Param("email") String email, @Param("password")String password);
-
     Admin loginPhone(String phone, String password);
-
+    //分页
     Long findCount(AdminQueryDto queryDto);
-
     List<AdminQueryVo> findByPage(AdminQueryDto queryDto);
+
+    int save(Admin admin);
+
+    int update(Admin admin);
+
+    int delById(@Param("id")Integer id);
+
+    int delBatch(@Param("arrStr")String arrStr);
 }

@@ -49,104 +49,43 @@
         </script>
         <!--添加修改页面-->
         <div style="display: none" id="edit">
-            <!--  <form class="layui-form"  lay-filter="drug-filter"  >
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">药品类型</label>
-                      <div class="layui-input-block">
-                          <select name="druTypId">
-                              <option>&#45;&#45;请选择&#45;&#45;</option>
-                              <option value="1">抗生素用药</option>
-                              <option value="2">心血管用药</option>
-                              <option value="3">消化系统用药</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">药品状态</label>
-                      <div class="layui-input-block">
-                          <select name="druState">
-                              <option value="0">有效</option>
-                              <option value="1">无效</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">药品名称</label>
-                      <div class="layui-input-block">
-                          <input type="text" name="druName"  autocomplete="off" placeholder="请输入药品名称" class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">药品编号</label>
-                      <div class="layui-input-block">
-                          <input type="text" name="druNo"  autocomplete="off"  class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">条形码</label>
-                      <div class="layui-input-block">
-                          <input type="text" name="druCore"  autocomplete="off"  class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">型号</label>
-                      <div class="layui-input-block">
-                          <input type="text" name="druModel"  autocomplete="off"  class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">单位</label>
-                      <div class="layui-input-block">
-                          <input type="text" name="druUnit"  autocomplete="off"  class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">数量</label>
-                      <div class="layui-input-block">
-                          <input type="number" name="druInventoryQuantity"  autocomplete="off"  class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">供应商</label>
-                      <div class="layui-input-block">
-                          <select name="supId">
-                              <option>&#45;&#45;请选择&#45;&#45;</option>
-                              <option value="1">美林制药</option>
-                              <option value="2">云南白药</option>
-                              <option value="3">香港制药</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">客户单价</label>
-                      <div class="layui-input-block">
-                          <input type="number" name="druCustomerPrice"  autocomplete="off"  class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">成本价</label>
-                      <div class="layui-input-block">
-                          <input type="number" name="dru_price"  autocomplete="off"  class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">特价</label>
-                      <div class="layui-input-block">
-                          <input type="number" name="druSpecialPrice"  autocomplete="off"  class="layui-input">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">是否销售</label>
-                      <div class="layui-input-block">
-                          <input type="checkbox" checked="" name="dru_sale" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
-                      </div>
-                  </div>
-                  <div class="layui-form-item layui-form-text">
-                      <label class="layui-form-label">药品描述</label>
-                      <div class="layui-input-block">
-                          <textarea name="druNotes" placeholder="请输入内容" class="layui-textarea"></textarea>
-                      </div>
-                  </div>
+            <form class="layui-form"  lay-filter="department-filter"  >
+                <input  type="hidden" value="" name="id">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">管理员名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" value="" name="userName" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">角色ID</label>
+                    <div class="layui-input-block">
+                        <select name="id"> <!--动态获取--->
+                            <option>&#45;&#45;请选择&#45;&#45;</option>
+                            <option value="1">董事部</option>
+                            <option value="2">市场部</option>
+                            <option value="3">销售部</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">角色名称</label>
+                    <div class="layui-input-block">
+                        <select name="username"> <!--动态获取--->
+                            <option>&#45;&#45;请选择&#45;&#45;</option>
+                            <option value="1">李四</option>
+                            <option value="2">王麻子</option>
+                            <option value="3">陈鑫</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                    </div>
+                </div>
+            </form>
+            <!--
                   <div class="layui-upload-drag" id="test10">
                       <i class="layui-icon"></i>
                       <p>点击上传，或将文件拖拽到此处</p>
@@ -185,8 +124,8 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 120, title: '编号'},
-                {field: 'userName', width:140, title: '名字'},
-                {field: ' nickName', width: 140, title: '昵称'},
+                // {field: 'userName', width:140, title: '名字'},
+                // {field: 'nickName', width: 140, title: '昵称'},
                 {field: 'phone', width: 140, title: '手机号码'},
                 {field: 'email', title: '邮箱', width: 120},
                 {field: 'roleId', title: '角色ID', width: 120},
@@ -194,8 +133,8 @@
                 {field: 'sex', title: '性别', width: 120},
                 {title: '操作', minWidth: 140, toolbar: '#currentTableBar', align: "center"}
             ]],
-            limits: [10,50, 100],
-            limit: 10,
+            limits: [5,50, 100],
+            limit: 5,
             page: true,
             skin: 'line'
         });
@@ -203,20 +142,15 @@
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
             var result = JSON.stringify(data.field);
-            layer.alert(result, {
-                title: '最终的搜索信息'
-            });
 
             //执行搜索重载
             table.reload('currentTableId', {
                 page: {
                     curr: 1
                 }
-                , where: {
-                    searchParams: result
-                }
-            }, 'data');
+                , where: data.field
 
+            }, 'data');
             return false;
         });
 
@@ -227,7 +161,7 @@
             if (obj.event === 'add') {  // 监听添加操作
                 //把当前隐藏的div进行窗口展示
                 var index = layer.open({
-                    title: '添加药品',
+                    title: '添加管理员',
                     type: 1,
                     shade: 0.2,
                     area: ['600px', '500px'],
@@ -237,9 +171,40 @@
                 $(window).on("resize", function () {
                     layer.full(index);
                 });
-            } else if (obj.event === 'down') {  // 监听删除操作
-                console.log("导出所有查询的数据");
-                layer.alert(JSON.stringify(data));
+            } else if (obj.event === 'delBatch') {  // 监听删除操作
+                console.log("批量删除");
+                // layer.alert(JSON.stringify(data));
+                //被选中数据批量删除
+                //获得被选中的数据
+                var checkStatus = table.checkStatus('currentTableId'); //idTest 即为基础参数 id 对应的值
+                //获取被选中的数据的个数
+                var length=checkStatus.data.length;
+                if(length==0){
+                    layer.msg("请至少选中一条数据");
+                }else {
+                    //定义数组 保存所有的id
+                    var arrStr = "";
+                    var  data=checkStatus.data;//只想获取deptId的值数组
+                    for(var i=0;i<data.length;i++){
+                        arrStr+=data[i].id+",";//11,12,13,
+                    }
+                    arrStr=arrStr.substring(0,arrStr.length-1);
+                    console.log(arrStr);
+
+                    // console.log(data);
+                    $.post("/admin/delBatch",{arrStr:arrStr},
+                        function(resultData){//后端响应成功后返回的数据结果
+                            //  code  请求状态  data 数据 msg错误消息
+                            if(resultData.code==0){
+                                layer.msg("批量删除成功");
+                                //页面自动刷新
+                                location.reload();
+                            }else{
+                                layer.msg("批量删除失败,请联系管理员");
+                            }
+                            //业务判断
+                        }, "json");
+                }
             }
         });
         //监听表格里面的工具
@@ -250,14 +215,15 @@
                  "druNo":data.druNo,
                  "druName":data.druName
              });*/
+            console.log(data);
             //设置表单所以表单元素的值
-            form.val("drug-filter",data);
+            form.val("admin-filter",data);
             //img  单独设置
-            layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', data.druImgPath);
+            // layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', data.druImgPath);
             //修改  打开新的窗口 进行信息编辑
             if (obj.event === 'edit') {
                 var index = layer.open({
-                    title: '编辑用户',
+                    title: '编辑管理员',
                     type: 1,
                     shade: 0.2,
                     maxmin:true,
@@ -271,23 +237,65 @@
                 return false;
             } else if (obj.event === 'delete') {//删除的当前
                 layer.confirm('真的删除行么', function (index) {
+                    console.log(index);
                     //先请求后端做删除操作
-                    obj.del();//假删 页面刷新数据回来了
+                    $.getJSON("/admin/delById", {id:data.id},
+                        function(resultData){//响应成功的回调函数
+                            //  code  请求状态  data 数据 msg错误消息
+                            console.log(index);
+                            if(resultData.code==0){
+                                layer.msg("删除成功");
+                                obj.del();//假删 页面刷新数据回来了
+                            }else{
+                                layer.msg("删除失败,请联系管理员");
+                            }
+                            //业务判断
+                        });
                     layer.close(index);
                 });
             }
         });
 
 
-        //拖拽上传
-        upload.render({
-            elem: '#test10'
-            ,url: 'https://httpbin.org/post' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
-            ,done: function(res){
-                layer.msg('上传成功');
-                layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
-                console.log(res)
+        //修改添加的事件
+        form.on('submit(demo1)', function (data) {
+            //输出打印表单的字段信息:
+            console.log(data.field);
+            var  data=data.field;
+            //怎么是修改还是添加?
+            if(data.deptId==""){
+                console.log("添加");//id自增
+                //请求后端新增
+                $.post("/admin/save",data,
+                    function(resultData){//后端响应成功后返回的数据结果
+                        //  code  请求状态  data 数据 msg错误消息
+                        console.log(resultData);
+                        if(resultData.code==0){
+                            layer.msg("添加成功");
+                        }else{
+                            layer.msg("添加失败,请联系管理员");
+                        }
+                        //业务判断
+                    }, "json");
             }
+            else{
+                console.log("修改");//根据id修改
+                //请求后端做修改
+                $.post("/admin/update",data ,
+                    function(resultData){//后端响应成功后返回的数据结果
+                        //  code  请求状态  data 数据 msg错误消息
+                        console.log(resultData);
+                        if(resultData.code==0){
+                            layer.msg("修改成功");
+                        }else{
+                            layer.msg("修改失败,请联系管理员");
+                        }
+                        //业务判断
+                    }, "json");
+            }
+            //关闭当前窗口
+            layer.close(index);
+            return false;
         });
     });
 </script>
