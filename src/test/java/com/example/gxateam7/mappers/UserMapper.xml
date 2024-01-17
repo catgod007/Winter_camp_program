@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.gxateam7.mapper.UserMapper">
+    <select id="loginEmail" resultType="com.example.gxateam7.entity.User">
+        select  *  from  user
+        where
+            email=#{email} and password=#{password}
+    </select>
+    <select id="loginPhone" resultType="com.example.gxateam7.entity.User">
+        select  *  from  user
+        where
+            phone=#{param1} and password=#{param2}
+    </select>
+</mapper>
