@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace一般定义为 包名+文件名 -->
+<mapper namespace="com.example.gxateam7.mapper.TeacherMapper">
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(Id) from temt7.teacher_info
+        <where>
+            <if test="username != null and username != ''">
+                username like concat('%',#{username},'%')
+            </if>
+            <if test="collage != null and collage != ''">
+                and collage=#{collage}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectUsers" resultType="com.example.gxateam7.entity.pojo.Teacher" parameterType="java.lang.Integer">
+        SELECT Id, username, sex,birthday,grade,rank,jobDate,collage,password,phone,roleId FROM temt7.teacher_info
+        <where>
+            <if test="username != null and username != ''">
+                username LIKE CONCAT('%', #{username}, '%')
+            </if>
+            <if test="sex != null and sex != ''">
+                AND sex = #{sex}
+            </if>
+            <if test="birthday != null and birthday != ''">
+                AND birthday = #{birthday}
+            </if>
+            <if test="grade != null and grade != ''">
+                AND grade = #{grade}
+            </if>
+            <if test="rank != null and rank != ''">
+                AND rank = #{rank}
+            </if>
+            <if test="jobDate != null and jobDate != ''">
+                AND jobDate = #{jobDate}
+            </if>
+            <if test="collage != null and collage != ''">
+                AND collage = #{collage}
+            </if>
+            <if test="password != null and password != ''">
+                AND password = #{password}
+            </if>
+            <if test="phone != null and phone != ''">
+                AND phone = #{phone}
+            </if>
+            <if test="roleId != null and roleId != ''">
+                AND roleId = #{roleId}
+            </if>
+        </where>
+        limit #{index},#{limit}
+    </select>
+
+    <insert id="insert" parameterType="java.lang.String">
+        insert into temt7.teacher_info(username, sex,birthday,grade,rank,jobDate,collage,password,phone,roleId)
+        values (#{username}, #{sex},#{birthday},#{grade}, #{rank},#{jobDate}, #{collage},#{password},#{phone}, #{roleId})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from temt7.teacher_info where Id=#{Id}
+    </delete>
+
+
+    <update id="update" parameterType="java.util.Map">
+        UPDATE temt7.teacher_info
+        SET username = #{username}, sex = #{sex},birthday = #{birthday},
+            grade = #{grade}, rank = #{rank},jobDate = #{jobDate},
+            collage = #{collage},
+            password = #{password}, phone = #{phone},roleId = #{roleId}
+        WHERE Id = #{Id}
+
+    </update>
+
+</mapper>
