@@ -8,7 +8,7 @@ public class AdminQueryVo extends Admin {
     /**
      * 角色名称
      */
-    private String roleName;
+    private String rolename;
 //    /**
 //     * 负责人名称
 //     */
@@ -22,11 +22,12 @@ public class AdminQueryVo extends Admin {
 //        this.username = username;
 //    }
 
-    public String getRoleName() {
-        return roleName;
+
+    public String getRolename() {
+        return rolename;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
     }
 }

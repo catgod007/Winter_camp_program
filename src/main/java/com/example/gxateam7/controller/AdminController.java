@@ -43,7 +43,8 @@ import javax.annotation.Resource;
             return r;
         }
         @PostMapping("/save")
-        public  R  save(Admin admin){return adminService.save(admin);}
+        public  R  save(AdminQueryVo queryVo){return adminService.save(queryVo);}
+
         @PostMapping("/update")
         public  R  update(Admin  admin){
             return adminService.update(admin);
