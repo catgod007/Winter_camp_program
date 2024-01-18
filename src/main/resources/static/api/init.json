@@ -94,6 +94,20 @@
               "target": "_self"
             }
           ]
+        },
+        {
+          "title": "学生管理",
+          "icon": "fa fa-lemon-o",
+          "href": "",
+          "target": "_self",
+          "child": [
+            {
+              "title": "学生信息",
+              "href": "/page/power/student.html",
+              "icon": "fa fa-dot-circle-o",
+              "target": "_self"
+            }
+          ]
         }
       ]
     }
