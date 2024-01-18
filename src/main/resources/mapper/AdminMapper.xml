@@ -2,21 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.gxateam7.mapper.AdminMapper">
     <insert id="save">
-        insert  into admin_info(userName,userpass,nickName,roleId,roleName,sex,phone,email)
-            value(#{userName},#{userpass},#{nickName},#{roleId},#{roleName},#{sex},#{phone},#{email})
+        insert  into admin_info(userName,userpass,nickName,roleName,sex,phone,email)
+            value(#{userName},#{userpass},#{nickName},#{roleName},#{sex},#{phone},#{email})
     </insert>
     <update id="update">
         update  admin_info  set
                                 userName=#{userName},
                                 userpass=#{userpass},
                                 nickName=#{nickName},
-                                roleId=#{roleId},
                                 roleName=#{roleName},
                                 sex=#{sex},
                                 phone=#{phone},
                                 email=#{email}
         where  id=#{id}
-
     </update>
     <delete id="delById">
         delete from admin_info where id=#{id}
@@ -38,18 +36,20 @@
         select
             count(1)
         from
-            admin_info a
+            admin_info a left join role_info r on a.role_id=r.role_id
         <where>
-            <if test="userName!=null and userName!=''">
-                a.userName  like concat('%',#{userName},'%')
+            <if test="username!=null and username!=''">
+                a.username  like concat('%',#{username},'%')
             </if>
         </where>
     </select>
     <select id="findByPage" resultType="com.example.gxateam7.entity.vo.AdminQueryVo">
-            select * from admin_info a
+            select a.id,a.username,a.nickname,a.sex,a.phone,a.email,r.rolename,r.roleremark
+            from
+                admin_info a left join role_info r on a.role_id = r.role_id
             <where>
-                <if test="userName!=null and userName!=''">
-                    a.userName  like concat('%',#{userName},'%')
+                <if test="username!=null and username!=''">
+                    a.username  like concat('%',#{username},'%')
                 </if>
             </where>
             limit #{page},#{limit}

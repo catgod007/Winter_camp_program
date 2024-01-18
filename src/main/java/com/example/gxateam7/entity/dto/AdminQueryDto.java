@@ -2,16 +2,16 @@ package com.example.gxateam7.entity.dto;
 
 //查询管理员的实体类
 public class AdminQueryDto {
-    private  String  userName;//可能会值 也可能每you
+    private  String  username;//可能会值 也可能每you
     private  Integer  limit;
     private  Integer page;
 
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     public void setUsername(String username) {
-        this.userName = username;
+        this.username = username;
     }
 
     public Integer getLimit() {

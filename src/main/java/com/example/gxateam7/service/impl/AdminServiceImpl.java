@@ -12,13 +12,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * the early bird catches the worm.
- * User: ch
- * Date: 2024/01/15 13:23
- * Description:
- * Version: V1.0
- */
 @Service
 public class AdminServiceImpl implements AdminService {
     @Resource
@@ -91,6 +84,4 @@ public class AdminServiceImpl implements AdminService {
         }
         return R.error(ResultCodeEnum.UNKNOWN_REASON);
     }
-
-
 }

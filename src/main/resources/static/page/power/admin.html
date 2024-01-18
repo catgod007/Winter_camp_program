@@ -21,7 +21,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">管理员名称</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="userName" autocomplete="off" class="layui-input">
+                                <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -60,7 +60,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">角色ID</label>
                     <div class="layui-input-block">
-                        <select name="id"> <!--动态获取--->
+                        <select name="roleId"> <!--动态获取--->
                             <option>&#45;&#45;请选择&#45;&#45;</option>
                             <option value="1">董事部</option>
                             <option value="2">市场部</option>
@@ -124,11 +124,11 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 120, title: '编号'},
-                // {field: 'userName', width:140, title: '名字'},
-                // {field: 'nickName', width: 140, title: '昵称'},
+                {field: 'username', width:140, title: '名字'},
+                {field: 'nickname', width: 140, title: '昵称'},
                 {field: 'phone', width: 140, title: '手机号码'},
                 {field: 'email', title: '邮箱', width: 120},
-                {field: 'roleId', title: '角色ID', width: 120},
+                // {field: 'roleId', title: '角色ID', width: 120},
                 {field: 'roleName', title: '角色名称', width: 120},
                 {field: 'sex', title: '性别', width: 120},
                 {title: '操作', minWidth: 140, toolbar: '#currentTableBar', align: "center"}
@@ -142,7 +142,7 @@
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
             var result = JSON.stringify(data.field);
-
+            // console.log(result);
             //执行搜索重载
             table.reload('currentTableId', {
                 page: {
@@ -151,6 +151,7 @@
                 , where: data.field
 
             }, 'data');
+            // console.log(result);
             return false;
         });
 
@@ -245,7 +246,7 @@
                             console.log(index);
                             if(resultData.code==0){
                                 layer.msg("删除成功");
-                                obj.del();//假删 页面刷新数据回来了
+                                // obj.del();//假删 页面刷新数据回来了
                             }else{
                                 layer.msg("删除失败,请联系管理员");
                             }
