@@ -1,10 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>管理员</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
 </head>
 <body>
-角色增删改查
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <!--表格头部工具-->
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">
+                    <i class="layui-icon layui-icon-add-circle"></i>添加角色</button>
+            </div>
+        </script>
+        <!--表格-->
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <!--表格内部工具-->
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+        <!--添加修改页面-->
+        <div style="display: none" id="edit">
+            <form class="layui-form"  lay-filter="department-filter"  >
+                <input  type="hidden" value="" name="id">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">角色名</label>
+                    <div class="layui-input-block">
+                        <select name="rolename">
+                            <option>&#45;&#45;请选择&#45;&#45;</option>
+                            <option value="1">超级管理员</option>
+                            <option value="2">学生管理员</option>
+                            <option value="3">课程管理员</option>
+                            <option value="3">菜单管理员</option>
+                            <option value="3">教师管理员</option>
+                        </select>
+                        <input type="text" value="" name="userName" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">角色描述</label>
+                    <div class="layui-input-block">
+                        <select name="roleremark"> <!--动态获取--->
+                            <option>&#45;&#45;请选择&#45;&#45;</option>
+                            <option value="1">管理所有</option>
+                            <option value="2">学生</option>
+                            <option value="3">管理课程</option>
+                            <option value="3">管理菜单页面</option>
+                            <option value="3">教师</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                    </div>
+                </div>
+            </form>
+            <!--
+                  <div class="layui-upload-drag" id="test10">
+                      <i class="layui-icon"></i>
+                      <p>点击上传，或将文件拖拽到此处</p>
+                      <div class="layui-hide" id="uploadDemoView">
+                          <hr>
+                          <img src="" alt="上传成功后渲染" style="max-width: 196px">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <div class="layui-input-block">
+                          <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                      </div>
+                  </div>
+              </form>-->
+        </div>
+    </div>
+</div>
+<script src="/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table','upload'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            upload=layui.upload,
+            table = layui.table;
+        //表格的信息字段所在处
+        table.render({
+            elem: '#currentTableId',
+            url: '/role/findByPage',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            //
+            cols: [[
+                {type: "checkbox", width: 50},
+                {field: 'rolename', width:140, title: '角色名字'},
+                {field: 'roleremark', width: 140, title: '角色描述'},
+                {field: 'role-id', title: '角色ID', width: 120},
+                {title: '操作', minWidth: 140, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [5,50, 100],
+            limit: 5,
+            page: true,
+            skin: 'line'
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = JSON.stringify(data.field);
+
+            //执行搜索重载
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                , where: data.field
+
+            }, 'data');
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'add') {  // 监听添加操作
+                //把当前隐藏的div进行窗口展示
+                var index = layer.open({
+                    title: '添加角色',
+                    type: 1,
+                    shade: 0.2,
+                    area: ['600px', '500px'],
+                    maxmin:true,
+                    content: $("#edit")
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            } else if (obj.event === 'delBatch') {  // 监听删除操作
+                console.log("批量删除");
+                // layer.alert(JSON.stringify(data));
+                //被选中数据批量删除
+                //获得被选中的数据
+                var checkStatus = table.checkStatus('currentTableId'); //idTest 即为基础参数 id 对应的值
+                //获取被选中的数据的个数
+                var length=checkStatus.data.length;
+                if(length==0){
+                    layer.msg("请至少选中一条数据");
+                }else {
+                    //定义数组 保存所有的id
+                    var arrStr = "";
+                    var  data=checkStatus.data;//只想获取deptId的值数组
+                    for(var i=0;i<data.length;i++){
+                        arrStr+=data[i].id+",";//11,12,13,
+                    }
+                    arrStr=arrStr.substring(0,arrStr.length-1);
+                    console.log(arrStr);
+
+                    // console.log(data);
+                    $.post("/admin/delBatch",{arrStr:arrStr},
+                        function(resultData){//后端响应成功后返回的数据结果
+                            //  code  请求状态  data 数据 msg错误消息
+                            if(resultData.code==0){
+                                layer.msg("批量删除成功");
+                                //页面自动刷新
+                                location.reload();
+                            }else{
+                                layer.msg("批量删除失败,请联系管理员");
+                            }
+                            //业务判断
+                        }, "json");
+                }
+            }
+        });
+        //监听表格里面的工具
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;//获取这一行的数据  被点击的的这一行
+            //先给表单赋值  名字不一致一个个赋值
+            /* form.val("drug-filter",{
+                 "druNo":data.druNo,
+                 "druName":data.druName
+             });*/
+            console.log(data);
+            //设置表单所以表单元素的值
+            form.val("admin-filter",data);
+            //img  单独设置
+            // layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', data.druImgPath);
+            //修改  打开新的窗口 进行信息编辑
+            if (obj.event === 'edit') {
+                var index = layer.open({
+                    title: '编辑管理员',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['100%', '100%'],
+                    content: $("#edit")
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
+            } else if (obj.event === 'delete') {//删除的当前
+                layer.confirm('真的删除行么', function (index) {
+                    console.log(index);
+                    //先请求后端做删除操作
+                    $.getJSON("/admin/delById", {id:data.id},
+                        function(resultData){//响应成功的回调函数
+                            //  code  请求状态  data 数据 msg错误消息
+                            console.log(index);
+                            if(resultData.code==0){
+                                layer.msg("删除成功");
+                                obj.del();//假删 页面刷新数据回来了
+                            }else{
+                                layer.msg("删除失败,请联系管理员");
+                            }
+                            //业务判断
+                        });
+                    layer.close(index);
+                });
+            }
+        });
+
+
+        //修改添加的事件
+        form.on('submit(demo1)', function (data) {
+            //输出打印表单的字段信息:
+            console.log(data.field);
+            var  data=data.field;
+            //怎么是修改还是添加?
+            if(data.deptId==""){
+                console.log("添加");//id自增
+                //请求后端新增
+                $.post("/admin/save",data,
+                    function(resultData){//后端响应成功后返回的数据结果
+                        //  code  请求状态  data 数据 msg错误消息
+                        console.log(resultData);
+                        if(resultData.code==0){
+                            layer.msg("添加成功");
+                        }else{
+                            layer.msg("添加失败,请联系管理员");
+                        }
+                        //业务判断
+                    }, "json");
+            }
+            else{
+                console.log("修改");//根据id修改
+                //请求后端做修改
+                $.post("/admin/update",data ,
+                    function(resultData){//后端响应成功后返回的数据结果
+                        //  code  请求状态  data 数据 msg错误消息
+                        console.log(resultData);
+                        if(resultData.code==0){
+                            layer.msg("修改成功");
+                        }else{
+                            layer.msg("修改失败,请联系管理员");
+                        }
+                        //业务判断
+                    }, "json");
+            }
+            //关闭当前窗口
+            layer.close(index);
+            return false;
+        });
+    });
+</script>
+
 </body>
 </html>
