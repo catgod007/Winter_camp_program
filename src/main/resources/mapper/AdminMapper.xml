@@ -2,15 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.gxateam7.mapper.AdminMapper">
     <insert id="save">
-        insert  into admin_info(userName,userpass,nickName,roleName,sex,phone,email)
-            value(#{userName},#{userpass},#{nickName},#{roleName},#{sex},#{phone},#{email})
+        insert  into admin_info(username,userpass,role_id,sex,phone,email)
+            value(#{username},#{userpass},#{roleId},#{sex},#{phone},#{email})
     </insert>
     <update id="update">
         update  admin_info  set
-                                userName=#{userName},
+                                username=#{username},
                                 userpass=#{userpass},
-                                nickName=#{nickName},
-                                roleName=#{roleName},
+                                role_id=#{roleId},
                                 sex=#{sex},
                                 phone=#{phone},
                                 email=#{email}

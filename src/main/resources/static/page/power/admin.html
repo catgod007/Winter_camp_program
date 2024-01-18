@@ -152,10 +152,6 @@
                 $("#roleId").html(option_arr);
                 //这是layui的下拉框 有样式修饰所有需要刷新
                 form.render('select'); //渲染 select 选择框
-                //<option value="deptId">deptName</option>
-                ///<option value="2">王麻子</option>
-                // <option value="3">陈鑫</option>
-
             }else{
                 layer.msg(resultData.msg);
             }
@@ -346,6 +342,7 @@
             }
             //关闭当前窗口
             layer.close(index);
+            location.reload();
             return false;
         });
     });
