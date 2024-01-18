@@ -44,8 +44,7 @@ import javax.annotation.Resource;
         }
 
         @PostMapping("/save")
-        public  R  save(Admin admin){
-            return adminService.save(admin);
+        public  R  save(Admin admin){return adminService.save(admin);
         }
         @PostMapping("/update")
         public  R  update(Admin  admin){
@@ -61,6 +60,7 @@ import javax.annotation.Resource;
             System.out.println(arrStr);
             return adminService.delBatch(arrStr);
         }
+
 
 
     }

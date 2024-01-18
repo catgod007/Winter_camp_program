@@ -54,4 +54,7 @@
             </where>
             limit #{page},#{limit}
     </select>
+    <select id="findByParentValue" resultType="com.example.gxateam7.entity.pojo.Role">
+        select role_id,rolename  from  role_info
+    </select>
 </mapper>

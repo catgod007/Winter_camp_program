@@ -2,6 +2,7 @@ package com.example.gxateam7.mapper;
 
 import com.example.gxateam7.entity.dto.AdminQueryDto;
 import com.example.gxateam7.entity.pojo.Admin;
+import com.example.gxateam7.entity.pojo.Role;
 import com.example.gxateam7.entity.vo.AdminQueryVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -32,4 +33,6 @@ public interface AdminMapper {
     int delById(@Param("id")Integer id);
 
     int delBatch(@Param("arrStr")String arrStr);
+
+
 }

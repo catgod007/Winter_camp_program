@@ -23,4 +23,5 @@ public interface AdminService {
     R delById(Integer id);
 
     R delBatch(String arrStr);
+
 }
