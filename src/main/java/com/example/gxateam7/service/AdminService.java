@@ -2,6 +2,7 @@ package com.example.gxateam7.service;
 
 import com.example.gxateam7.entity.dto.AdminQueryDto;
 import com.example.gxateam7.entity.pojo.Admin;
+import com.example.gxateam7.entity.vo.AdminQueryVo;
 import com.example.gxateam7.utils.model.R;
 
 /**
@@ -16,7 +17,7 @@ public interface AdminService {
 
     R findByPage(AdminQueryDto queryDto);
 
-    R save(Admin admin);
+    R save(AdminQueryVo queryVo);
 
     R update(Admin admin);
 
