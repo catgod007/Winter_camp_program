@@ -49,27 +49,27 @@
         </script>
         <!--添加修改页面-->
         <div style="display: none" id="edit">
-            <form class="layui-form"  lay-filter="department-filter"  >
+            <form class="layui-form"  lay-filter="admin-filter"  >
                 <input  type="hidden" value="" name="id">
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>
                     <div class="layui-input-block">
-                        <input type="text" value="" placeholder="请输入用户名" name="userName" class="layui-input">
+                        <input type="text" value="" placeholder="请输入用户名" name="username" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">昵称</label>
+                    <div class="layui-input-block">
+                        <input type="text" value="" placeholder="请输入昵称" name="nickname" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-inline" >
+                        <input type="password" name="userpass" placeholder="请输入密码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
 
-                <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-block">
-                        <input type="password" placeholder="请输入密码" value="" name="userpass" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">确认密码</label>
-                    <div class="layui-input-block">
-                        <input type="password" value="" placeholder="请再次输入密码" name="userpass" class="layui-input">
-                    </div>
-                </div>
                 <div class="layui-form-item">
                 <label class="layui-form-label">性别</label>
                     <div class="layui-input-block">
@@ -82,10 +82,10 @@
                     <label class="layui-form-label">角色名称</label>
                     <div class="layui-input-block">
                         <select name="roleId" placeholder="请选择角色" id="roleId"> <!--动态获取--->
-                            <option>&#45;&#45;请选择&#45;&#45;</option>-->
-                            <option value="1">李四</option>-->
-                            <option value="2">王麻子</option>-->
-                            <option value="3">陈鑫</option>-->
+<!--                            <option>&#45;&#45;请选择&#45;&#45;</option>&ndash;&gt;-->
+<!--                            <option value="1">李四</option>&ndash;&gt;-->
+<!--                            <option value="2">王麻子</option>&ndash;&gt;-->
+<!--                            <option value="3">陈鑫</option>&ndash;&gt;-->
                         </select>
                     </div>
                 </div>
@@ -135,11 +135,11 @@
             upload=layui.upload,
             table = layui.table;
         var index;
-        //查询父级
+        //查询角色名称
         $.getJSON("/role/findByParentValue", function(resultData){//响应成功的回调函数
             //  code  请求状态  data 数据 msg错误消息
             if(resultData.code==0){
-                console.log(resultData);//{code:0,msg:成功,data:[{detpId:1,detpName:董事部},{detpId:2,detpName:xx部}]
+                // console.log(resultData);//{code:0,msg:成功,data:[{detpId:1,detpName:董事部},{detpId:2,detpName:xx部}]
                 // 把数据放到select中
                 //生成一段前端元素
                 var  option_arr="<option value=''>--请选择--</option>";
@@ -147,15 +147,11 @@
                 for(var i=0;i<data_arr.length;i++){
                     option_arr+="<option value="+data_arr[i].roleId+">"+data_arr[i].rolename+"</option>\n";
                 }
-                console.log(option_arr);
+                // console.log(option_arr);
                 //但是还没有渲染 select
                 $("#roleId").html(option_arr);
                 //这是layui的下拉框 有样式修饰所有需要刷新
                 form.render('select'); //渲染 select 选择框
-                //<option value="deptId">deptName</option>
-                ///<option value="2">王麻子</option>
-                // <option value="3">陈鑫</option>
-
             }else{
                 layer.msg(resultData.msg);
             }
@@ -177,9 +173,10 @@
                 {field: 'username', width:140, title: '名字'},
                 {field: 'nickname', width: 140, title: '昵称'},
                 {field: 'phone', width: 140, title: '手机号码'},
+                // {field: 'userpass', width: 140, title: '手机号码'},
                 {field: 'email', title: '邮箱', width: 120},
                 // {field: 'roleId', title: '角色ID', width: 120},
-                {field: 'roleName', title: '角色名称', width: 120},
+                {field: 'rolename', title: '角色名称', width: 120},
                 {field: 'sex', title: '性别', width: 120},
                 {title: '操作', minWidth: 140, toolbar: '#currentTableBar', align: "center"}
             ]],
@@ -268,12 +265,12 @@
              });*/
             console.log(data);
             //设置表单所以表单元素的值
-            form.val("admin-filter",data);
+            form.val("admin-filter",data);//
             //img  单独设置
             // layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', data.druImgPath);
             //修改  打开新的窗口 进行信息编辑
             if (obj.event === 'edit') {
-                var index = layer.open({
+                 index = layer.open({
                     title: '编辑管理员',
                     type: 1,
                     shade: 0.2,
@@ -306,8 +303,6 @@
                 });
             }
         });
-
-
         //修改添加的事件
         form.on('submit(demo1)', function (data) {
             //输出打印表单的字段信息:
@@ -346,6 +341,7 @@
             }
             //关闭当前窗口
             layer.close(index);
+            // location.reload();
             return false;
         });
     });

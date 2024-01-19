@@ -1,14 +1,12 @@
 package com.example.gxateam7.entity.vo;
 
-import com.example.gxateam7.entity.pojo.Admin;
+import com.example.gxateam7.entity.pojo.Role;
 
-
-//下拉框需要
-public class AdminQueryVo extends Admin {
+public class RoleQueryVo extends Role {
     /**
      * 角色名称
      */
-    private String rolename;
+//    private String rolename;
 //    /**
 //     * 负责人名称
 //     */
@@ -23,11 +21,11 @@ public class AdminQueryVo extends Admin {
 //    }
 
 
-    public String getRolename() {
-        return rolename;
-    }
-
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
-    }
+//    public String getRolename() {
+//        return rolename;
+//    }
+//
+//    public void setRolename(String rolename) {
+//        this.rolename = rolename;
+//    }
 }

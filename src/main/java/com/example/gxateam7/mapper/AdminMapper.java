@@ -26,7 +26,7 @@ public interface AdminMapper {
     Long findCount(AdminQueryDto queryDto);
     List<AdminQueryVo> findByPage(AdminQueryDto queryDto);
 
-    int save(Admin admin);
+    int save( AdminQueryVo queryVo);
 
     int update(Admin admin);
 

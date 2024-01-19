@@ -50,8 +50,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public R save(Admin admin) {
-        int row= adminMapper.save(admin);
+    public R save(AdminQueryVo queryVo) {
+        int row= adminMapper.save(queryVo);
         if(row>0){
             return  R.ok();
         }
