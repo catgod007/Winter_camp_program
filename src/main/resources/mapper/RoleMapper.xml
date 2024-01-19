@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.gxateam7.mapper.RoleMapper">
+    <insert id="save">
+        insert  into role_info(rolename,roleremark)
+            value(#{rolename},#{roleremark})
+    </insert>
+    <update id="update">
+        update  role_info  set
+                                rolename=#{rolename},
+                                roleremark=#{roleremark}
+        where  role_id=#{roleId}
+    </update>
+    <delete id="delById">
+        delete from role_info where role_id=#{id}
+    </delete>
     <select id="findByParentValue" resultType="com.example.gxateam7.entity.pojo.Role">
         select role_id,rolename  from  role_info
+    </select>
+    <select id="findCount" resultType="java.lang.Long">
+        select
+        count(1)
+        from
+        role_info r
+        <where>
+            <if test="rolename!=null and rolename!=''">
+                r.rolename  like concat('%',#{rolename},'%')
+            </if>
+        </where>
+    </select>
+    <select id="findByPage" resultType="com.example.gxateam7.entity.vo.RoleQueryVo">
+        select *
+        from
+        role_info r
+        <where>
+            <if test="rolename!=null and rolename!=''">
+                r.rolename  like concat('%',#{rolename},'%')
+            </if>
+        </where>
+        limit #{page},#{limit}
+
     </select>
 </mapper>
