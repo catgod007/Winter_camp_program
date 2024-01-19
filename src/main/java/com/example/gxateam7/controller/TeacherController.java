@@ -10,6 +10,7 @@ package com.example.gxateam7.controller;
 
 
         import com.example.gxateam7.entity.dto.TeacherDTO;
+        import com.example.gxateam7.entity.pojo.Teacher;
         import com.example.gxateam7.service.impl.TeacherServiceImpl;
         import org.springframework.web.bind.annotation.*;
         import javax.annotation.Resource;
@@ -50,18 +51,8 @@ public class TeacherController {
     }
 
     @PostMapping("/update")
-    public Map<String, Object> update(@RequestParam int Id,
-                                      @RequestParam String username,
-                                      @RequestParam int sex,
-                                      @RequestParam String birthday,
-                                      @RequestParam int grade,
-                                      @RequestParam int rank,
-                                      @RequestParam String jobDate,
-                                      @RequestParam String collage,
-                                      @RequestParam String password,
-                                      @RequestParam String phone,
-                                      @RequestParam int roleId) {
-        return teacherService.update(Id, username, sex,birthday,grade,rank,jobDate,collage,password,phone,roleId);
+    public Map<String, Object> update(@RequestBody Teacher teacher) {
+        return teacherService.update(teacher);
     }
 
 }

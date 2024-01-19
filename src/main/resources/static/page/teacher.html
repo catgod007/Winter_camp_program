@@ -64,7 +64,7 @@
 
     <script type="text/html" id="insert_form">
         <div class="layui-field-box">
-            <div class="layui-form-item layui-form-pane">
+
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-inline">
                     <input type="text" id="insert_username" class="layui-input" placeholder="请输入姓名">
@@ -139,7 +139,7 @@
 
 
 
-</div>
+
 </div>
 
 <div class="layui-footer" align="center">
@@ -382,6 +382,7 @@
                                 cache: false,                  // 关闭缓存，目的是为了避免部分浏览器缓存加载出错(IE)
                                 contentType: "application/json;charset=utf-8",
                                 data: JSON.stringify({
+                                    Id:data.Id,
                                     username: username,
                                     sex:sex,
                                     birthday: birthday,

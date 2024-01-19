@@ -61,14 +61,13 @@
     </delete>
 
 
-    <update id="update" parameterType="java.util.Map">
+    <update id="update" >
         UPDATE temt7.teacher_info
         SET username = #{username}, sex = #{sex},birthday = #{birthday},
             grade = #{grade}, rank = #{rank},jobDate = #{jobDate},
             collage = #{collage},
             password = #{password}, phone = #{phone},roleId = #{roleId}
         WHERE Id = #{Id}
-
     </update>
 
 </mapper>

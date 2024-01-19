@@ -1,6 +1,7 @@
 package com.example.gxateam7.service.impl;
 
 import com.example.gxateam7.entity.dto.TeacherDTO;
+import com.example.gxateam7.entity.pojo.Teacher;
 import com.example.gxateam7.mapper.TeacherMapper;
 import org.springframework.stereotype.Service;
 
@@ -53,24 +54,10 @@ public class TeacherServiceImpl {
         return map;
     }
 
-    public Map<String, Object> update(int id,  String username, int sex,String birthday,
-                                      int grade,int rank,String jobDate,String collage,
-                                      String password,String phone,int roleId) {
+    public Map<String, Object> update(Teacher teacher) {
         Map<String, Object> map = new HashMap<>();
-        map.put("username", username);
-        map.put("sex", sex);
-        map.put("birthday", birthday);
-        map.put("grade", grade);
-        map.put("rank", rank);
-        map.put("jobDate", jobDate);
-        map.put("collage", collage);
-        map.put("password", password);
-        map.put("phone", phone);
-        map.put("roleId", roleId);
+       teacherMapper.update(teacher.getId(),teacher.getUsername(), teacher.getSex(),teacher.getBirthday(),teacher.getGrade(),teacher.getRank(),teacher.getJobDate(),teacher.getCollage(),teacher.getPassword(),teacher.getPhone(),teacher.getRoleId());
 
-
-        map.put("id", id);
-        teacherMapper.update(map);
         map.put("code", 200);
         map.put("msg", "更新成功");
         return map;

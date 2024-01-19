@@ -2,6 +2,7 @@ package com.example.gxateam7.mapper;
 
 import com.example.gxateam7.entity.pojo.Teacher;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -65,6 +66,4 @@ public interface TeacherMapper {
                @Param("phone") String phone,
                @Param("roleId") int roleId);
 
-
-    void update(Map<String, Object> map);
 }
