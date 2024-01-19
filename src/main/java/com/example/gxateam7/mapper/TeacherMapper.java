@@ -1,6 +1,7 @@
 package com.example.gxateam7.mapper;
 
 import com.example.gxateam7.entity.pojo.Teacher;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.Map;
  * Description:
  * Version: V1.0
  */
-
+@Mapper
 public interface TeacherMapper {
 
     List<Teacher> selectUsers(@Param("index") int index, @Param("limit") int limit,

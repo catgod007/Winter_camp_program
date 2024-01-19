@@ -65,7 +65,7 @@
               "title": "管理员列表",
               "href": "/page/power/admin.html",
               "icon": "fa fa-adn",
-              "target": "_self"
+              "target": "_fly"
             },
             {
               "title": "角色管理",
@@ -104,6 +104,20 @@
             {
               "title": "学生信息",
               "href": "/page/power/student.html",
+              "icon": "fa fa-dot-circle-o",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "教师管理",
+          "icon": "fa fa-lemon-o",
+          "href": "",
+          "target": "_self",
+          "child": [
+            {
+              "title": "教师信息",
+              "href": "/page/power/teacher.html",
               "icon": "fa fa-dot-circle-o",
               "target": "_self"
             }
