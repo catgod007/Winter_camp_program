@@ -8,6 +8,7 @@ import com.example.gxateam7.service.AdminService;
 import com.example.gxateam7.utils.model.R;
 import com.example.gxateam7.utils.model.ResultCodeEnum;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -84,4 +85,6 @@ public class AdminServiceImpl implements AdminService {
         }
         return R.error(ResultCodeEnum.UNKNOWN_REASON);
     }
+
+
 }

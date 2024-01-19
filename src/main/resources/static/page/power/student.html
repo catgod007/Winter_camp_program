@@ -19,7 +19,7 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">请输入学生姓名</label>
+                            <label class="layui-form-label">学生姓名</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
@@ -47,27 +47,20 @@
         </script>
         <!--添加修改页面-->
         <div style="display: none" id="edit">
-            <form class="layui-form"  lay-filter="department-filter"  >
-                <input  type="hidden" value="" name="id">
+            <form class="layui-form"  lay-filter="student-filter"  >
+                <input  type="hidden" value="" name="stuId">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">用户名</label>
+                    <label class="layui-form-label">学生名称</label>
                     <div class="layui-input-block">
-                        <input type="text" value="" placeholder="请输入用户名" name="userName" class="layui-input">
+                        <input type="text" placeholder="请输入名称" value="" name="username" class="layui-input">
                     </div>
                 </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-block">
-                        <input type="password" placeholder="请输入密码" value="" name="userpass" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">确认密码</label>
-                    <div class="layui-input-block">
-                        <input type="password" value="" placeholder="请再次输入密码" name="userpass" class="layui-input">
-                    </div>
-                </div>
+<!--                <div class="layui-form-item">-->
+<!--                    <label class="layui-form-label">学生ID</label>-->
+<!--                    <div class="layui-input-block">-->
+<!--                        <input placeholder="请输入id" value="" name="id" class="layui-input">-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="layui-form-item">
                     <label class="layui-form-label">性别</label>
                     <div class="layui-input-block">
@@ -75,93 +68,24 @@
                         <input type="radio" name="sex" value="女" title="女">
                     </div>
                 </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">学生名称</label>
-                    <div class="layui-input-block">
-                        <select name="uesrname" > <!--动态获取--->
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
-                            <option value="1">刘洋</option>
-                            <option value="2">包春华</option>
-                            <option value="3">吴启华</option>
-                            <option value="4">张亚男</option>
-                            <option value="5">张小红</option>
-                            <option value="6">李莉莉</option>
-                            <option value="7">李阳</option>
-                            <option value="8">杨雯</option>
-                            <option value="9">王亮</option>
-                            <option value="10">高亮</option>
-                            <option value="11">王艳</option>
-                            <option value="12">白艳丽</option>
-                            <option value="13">赵敏</option>
-                            <option value="14">赵明亮</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">学生ID</label>
-                    <div class="layui-input-block">
-                        <select name="id" > <!--动态获取--->
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
-                            <option value="1">2023001</option>
-                            <option value="2">2023007</option>
-                            <option value="3">2023002</option>
-                            <option value="4">20230013</option>
-                            <option value="5">20230011</option>
-                            <option value="6">2023005</option>
-                            <option value="7">2023008</option>
-                            <option value="8">2023009</option>
-                            <option value="9">20230010</option>
-                            <option value="10">2023004</option>
-                            <option value="11">2023003</option>
-                            <option value="12">2023006</option>
-                            <option value="13">20230012</option>
-                            <option value="14">20230014</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生电话</label>
                     <div class="layui-input-block">
-                        <select name="phone" > <!--动态获取--->
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
-                            <option value="1">15728372837</option>
-                            <option value="2">13826478293</option>
-                            <option value="3">19137483823</option>
-                            <option value="4">19337842983</option>
-                            <option value="5">19037845729</option>
-                            <option value="6">13673325435</option>
-                            <option value="7">18364728483</option>
-                            <option value="8">13673224323</option>
-                            <option value="9">13673278726</option>
-                            <option value="10">18234567823</option>
-                            <option value="11">19348593029</option>
-                            <option value="12">19348593029</option>
-                            <option value="13">15123838493</option>
-                        </select>
+                        <input type="text" placeholder="请输入电话" value="" name="phone" class="layui-input">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生邮箱</label>
                     <div class="layui-input-block">
-                        <select name="email" > <!--动态获取--->
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
-                            <option value="1">example@email.com</option>
-                            <option value="2">example7@email.com</option>
-                            <option value="3">example1@email.com</option>
-                            <option value="4">example13@email.com</option>
-                            <option value="5">example11@email.com</option>
-                            <option value="6">example5@email.com</option>
-                            <option value="7">example8@email.com</option>
-                            <option value="8">example9@email.com</option>
-                            <option value="9">example10@email.com</option>
-                            <option value="10">example4@email.com</option>
-                            <option value="11">example3@email.com</option>
-                            <option value="12">example6@email.com</option>
-                            <option value="13">example12@email.com</option>
-                            <option value="14">example14@email.com</option>
-                        </select>
+                        <input type="text" placeholder="请输入邮箱" value="" name="email" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学生地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" placeholder="请输入地址" value="" name="address" class="layui-input">
                     </div>
                 </div>
 
@@ -170,6 +94,8 @@
                         <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
                     </div>
                 </div>
+
+
             </form>
             <!--
                   <div class="layui-upload-drag" id="test10">
@@ -225,7 +151,7 @@
         //表格的信息字段所在处
         table.render({
             elem: '#currentTableId',
-            url: '/api/student.json',
+            url: '/student/findByPage',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -235,14 +161,19 @@
             //
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'username', width: 120, title: '学生姓名'},
                 {field: 'id', width:140, title: '学生id'},
+                {field: 'username', width: 120, title: '学生姓名'},
                 {field: 'sex', width: 140, title: '学生性别'},
-                {field: 'birthday', width: 140, title: '生日'},
                 {field: 'phone', title: '电话号码', width: 120},
+                {field: 'email', title: '邮箱', width: 120},
+                {field: 'birthday', width: 140, title: '生日'},
                 {field: 'address', title: '地址', width: 120},
-                {field: 'note', title: '职位', width: 120},
-                {field: 'status', title: '状态', width: 120},
+                {field: 'note', title: '备注', width: 120},
+                //{field: 'rolename', title: '角色名称', width: 120},
+                //{field: 'status', title: '状态', width: 120},
+                //{field: 'level', title: '入学年份', width: 120},
+                //{field: 'createtime', title: '注册时间', width: 120},
+                //{field: 'role_id', title: '角色ID', width: 120},
                 {title: '操作', minWidth: 140, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10,50, 100],
@@ -273,7 +204,7 @@
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
                 //把当前隐藏的div进行窗口展示
-                var index = layer.open({
+                index = layer.open({
                     title: '添加管理员',
                     type: 1,
                     shade: 0.2,
@@ -305,7 +236,7 @@
                     console.log(arrStr);
 
                     // console.log(data);
-                    $.post("/admin/delBatch",{arrStr:arrStr},
+                    $.post("/student/delBatch",{arrStr:arrStr},
                         function(resultData){//后端响应成功后返回的数据结果
                             //  code  请求状态  data 数据 msg错误消息
                             if(resultData.code==0){
@@ -330,7 +261,7 @@
              });*/
             console.log(data);
             //设置表单所以表单元素的值
-            form.val("admin-filter",data);
+            form.val("student-filter",data);
             //img  单独设置
             // layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', data.druImgPath);
             //修改  打开新的窗口 进行信息编辑
@@ -352,7 +283,7 @@
                 layer.confirm('真的删除行么', function (index) {
                     console.log(index);
                     //先请求后端做删除操作
-                    $.getJSON("/admin/delById", {id:data.id},
+                    $.getJSON("/student/delById", {id:data.id},
                         function(resultData){//响应成功的回调函数
                             //  code  请求状态  data 数据 msg错误消息
                             console.log(index);
@@ -376,11 +307,11 @@
             console.log(data.field);
             var  data=data.field;
             //怎么是修改还是添加?
-            if(data.id==""){
+            if(data.stuId==""){
                 console.log("添加");//id自增
                 console.log(data);
                 //请求后端新增
-                $.post("/admin/save",data,
+                $.post("/student/save",data,
                     function(resultData){//后端响应成功后返回的数据结果
                         //  code  请求状态  data 数据 msg错误消息
                         console.log(resultData);
@@ -395,7 +326,7 @@
             else{
                 console.log("修改");//根据id修改
                 //请求后端做修改
-                $.post("/admin/update",data,
+                $.post("/student/update",data,
                     function(resultData){//后端响应成功后返回的数据结果
                         //  code  请求状态  data 数据 msg错误消息
                         console.log(resultData);
