@@ -293,6 +293,8 @@
                             console.log(index);
                             if(resultData.code==0){
                                 layer.msg("删除成功");
+                                //页面自动刷新
+                                location.reload();
                                 // obj.del();//假删 页面刷新数据回来了
                             }else{
                                 layer.msg("删除失败,请联系管理员");
@@ -319,6 +321,8 @@
                         console.log(resultData);
                         if(resultData.code==0){
                             layer.msg("添加成功");
+                            //页面自动刷新
+                            location.reload();
                         }else{
                             layer.msg("添加失败,请联系管理员");
                         }
@@ -334,6 +338,8 @@
                         console.log(resultData);
                         if(resultData.code==0){
                             layer.msg("修改成功");
+                            //页面自动刷新
+                            location.reload();
                         }else{
                             layer.msg("修改失败,请联系管理员");
                         }
