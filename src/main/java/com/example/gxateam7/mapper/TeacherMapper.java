@@ -1,12 +1,12 @@
 package com.example.gxateam7.mapper;
 
+import com.example.gxateam7.entity.dto.TeacherQueryDto;
 import com.example.gxateam7.entity.pojo.Teacher;
+import com.example.gxateam7.entity.vo.TeacherQueryVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,54 +17,15 @@ import java.util.Map;
  */
 @Mapper
 public interface TeacherMapper {
+    //分页
+    Long findCount(TeacherQueryDto queryDto);
+    List<TeacherQueryVo> findByPage(TeacherQueryDto queryDto);
 
-    List<Teacher> selectUsers(@Param("index") int index, @Param("limit") int limit,
-                              @Param("username") String username,
-                              @Param("sex") int sex,
-                              @Param("birthday") String birthday,
-                              @Param("grade") int grade,
-                              @Param("rank") int rank,
-                              @Param("jobData") String jobData,
-                              @Param("collage") String collage,
-                              @Param("password") String password,
-                              @Param("phone") String phone,
-                              @Param("roleId") int roleId
-    );
-    int insert(@Param("username") String username,
-               @Param("sex") int sex,
-               @Param("birthday") String birthday,
-               @Param("grade") int grade,
-               @Param("rank") int rank,
-               @Param("jobData") String jobData,
-               @Param("collage") String collage,
-               @Param("password") String password,
-               @Param("phone") String phone,
-               @Param("roleId") int roleId
-    );
-    int selectCount(@Param("username") String username,
-                    @Param("sex") int sex,
-                    @Param("birthday") String birthday,
-                    @Param("grade") int grade,
-                    @Param("rank") int rank,
-                    @Param("jobData") String jobData,
-                    @Param("collage") String collage,
-                    @Param("password") String password,
-                    @Param("phone") String phone,
-                    @Param("roleId") int roleId
-    );
+    int save(TeacherQueryVo queryVo);
 
-    int delete(@Param("Id") int Id);
+    int update(Teacher teacher);
 
-    int update(@Param("Id") int Id,
-               @Param("username") String username,
-               @Param("sex") int sex,
-               @Param("birthday") String birthday,
-               @Param("grade") int grade,
-               @Param("rank") int rank,
-               @Param("jobData") String jobData,
-               @Param("collage") String collage,
-               @Param("password") String password,
-               @Param("phone") String phone,
-               @Param("roleId") int roleId);
+    int delById(@Param("id")Integer id);
 
+    int delBatch(@Param("arrStr")String arrStr);
 }

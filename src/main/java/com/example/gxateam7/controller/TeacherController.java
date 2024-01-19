@@ -9,50 +9,48 @@ package com.example.gxateam7.controller;
  */
 
 
-        import com.example.gxateam7.entity.dto.TeacherDTO;
+        import com.example.gxateam7.entity.dto.TeacherQueryDto;
         import com.example.gxateam7.entity.pojo.Teacher;
-        import com.example.gxateam7.service.impl.TeacherServiceImpl;
+        import com.example.gxateam7.entity.vo.TeacherQueryVo;
+        import com.example.gxateam7.service.TeacherService;
+        import com.example.gxateam7.utils.model.R;
         import org.springframework.web.bind.annotation.*;
         import javax.annotation.Resource;
-        import java.util.Map;
 
 @RestController
-@RequestMapping("/teacher_info")
+@RequestMapping("/teacher")
 public class TeacherController {
 
     @Resource
-    private TeacherServiceImpl teacherService;
+    private TeacherService teacherService;
 
-    @GetMapping("/selectUsers")
-    public Map<String, Object> selectUsers(@RequestParam int page, @RequestParam int limit,
-                                           @RequestParam String username,
-                                           @RequestParam int sex,
-                                           @RequestParam String birthday,
-                                           @RequestParam int grade,
-                                           @RequestParam int rank,
-                                           @RequestParam String jobDate,
-                                           @RequestParam String collage,
-                                           @RequestParam String password,
-                                           @RequestParam String phone,
-                                           @RequestParam int roleId)
+    @GetMapping("/findByPage")
+    public R selectUsers(TeacherQueryDto queryDto)
     {
-        return teacherService.selectUsers(page,limit, username, sex,birthday,grade,rank,jobDate,collage,password,phone,roleId);
+       //调用Service
+        R r = teacherService.findByPage(queryDto);
+        return r;
+    }
+        @PostMapping("/save")
+        public  R  save(TeacherQueryVo queryVo){
+        return teacherService.save(queryVo);
     }
 
+        @PostMapping("/update")
+        public  R  update(Teacher teacher){
+            return teacherService.update(teacher);
+        }
 
+        @GetMapping("/delById")
+        public R  delById(Integer id){
+            return teacherService.delById(id);
+        }
 
-    @PostMapping("/insert")
-    public Map<String, Object> insert(@RequestBody TeacherDTO teacherDTO) {
-        return teacherService.insert(teacherDTO);
-    }
-    @PostMapping("/delete")
-    public Map<String, Object> delete(@RequestParam int Id){
-        return teacherService.delete(Id);
+    @PostMapping("/delBatch")
+    public  R delBatch( String arrStr){
+
+        return teacherService.delBatch(arrStr);
     }
 
-    @PostMapping("/update")
-    public Map<String, Object> update(@RequestBody Teacher teacher) {
-        return teacherService.update(teacher);
-    }
 
 }
