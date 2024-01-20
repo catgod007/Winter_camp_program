@@ -2,6 +2,8 @@ package com.example.gxateam7.controller;
 
 import com.example.gxateam7.entity.dto.StudentQueryDto;
 import com.example.gxateam7.entity.pojo.Student;
+import com.example.gxateam7.entity.pojo.Studenthhh;
+import com.example.gxateam7.entity.pojo.Studentint;
 import com.example.gxateam7.service.StudentService;
 import com.example.gxateam7.utils.model.R;
 import org.springframework.web.bind.annotation.*;
@@ -24,11 +26,11 @@ public class StudentController {
     }
 
     @PostMapping("/save")
-    public  R  save(Student student){return studentService.save(student);
+    public  R  save(Studentint student){return studentService.save(student);
     }
     @PostMapping("/update")
-    public  R  update(Student student){
-        return studentService.update(student);
+    public  R  update(Studenthhh studentint){
+        return studentService.update(studentint);
     }
 
     @GetMapping("/delById")

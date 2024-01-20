@@ -1,11 +1,12 @@
 package com.example.gxateam7.service.impl;
 
 import com.example.gxateam7.entity.dto.StudentQueryDto;
+
+
 import com.example.gxateam7.entity.pojo.Student;
-
-
+import com.example.gxateam7.entity.pojo.Studenthhh;
+import com.example.gxateam7.entity.pojo.Studentint;
 import com.example.gxateam7.entity.vo.StudentQueryVo;
-import com.example.gxateam7.mapper.AdminMapper;
 import com.example.gxateam7.mapper.StudentMapper;
 import com.example.gxateam7.service.StudentService;
 import com.example.gxateam7.utils.model.R;
@@ -41,7 +42,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public R save(Student student) {
+    public R save(Studentint student) {
         int row= studentMapper.save(student);
         if(row>0){
             return  R.ok();
@@ -50,7 +51,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public R update(Student student) {
+    public R update(Studenthhh student) {
 
         int row= studentMapper.update(student);
         if(row>0){

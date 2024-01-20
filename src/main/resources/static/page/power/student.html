@@ -205,6 +205,7 @@
             if (obj.event === 'add') {  // 监听添加操作
                 //把当前隐藏的div进行窗口展示
                 index = layer.open({
+                    url:"/student/save",
                     title: '添加管理员',
                     type: 1,
                     shade: 0.2,
@@ -215,7 +216,9 @@
                 $(window).on("resize", function () {
                     layer.full(index);
                 });
-            } else if (obj.event === 'delBatch') {  // 监听删除操作
+            }
+
+            else if (obj.event === 'delBatch') {  // 监听删除操作
                 console.log("批量删除");
                 // layer.alert(JSON.stringify(data));
                 //被选中数据批量删除

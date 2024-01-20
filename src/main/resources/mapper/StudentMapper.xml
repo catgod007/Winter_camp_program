@@ -2,18 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.gxateam7.mapper.StudentMapper">
     <insert id="save">
-            insert  into student_info(id,username,sex,phone,email)
-            value(#{id},#{username},#{sex},#{phone},#{email})</insert>
+            insert  into student_info(id,username,sex,phone,email,address)
+            value(#{id},#{username},#{sex},#{phone},#{email},#{address})</insert>
+
+
     <update id="update">
         update  student_info  set
                                 username=#{username},
-                                birthday=#{birthday},
                                 address=#{address},
                                 sex=#{sex},
                                 phone=#{phone},
                                 email=#{email}
-        where  id=#{id}
+        where  stu_id=#{stuId}
     </update>
+
+
     <delete id="delById">
         delete from student_info where id=#{id}
     </delete>
@@ -33,7 +36,7 @@
         </where>
     </select>
     <select id="findByPage" resultType="com.example.gxateam7.entity.vo.StudentQueryVo">
-        select s.id,s.username,s.sex,s.phone,s.email,s.birthday,s.address,s.note,r.rolename
+        select s.id,s.stu_id,s.username,s.sex,s.phone,s.email,s.birthday,s.address,s.note,r.rolename
         from
         student_info s left join role_info r on s.role_id = r.role_id
         <where>
