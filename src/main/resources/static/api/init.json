@@ -19,7 +19,7 @@
           "title": "设置",
           "href": "",
           "icon": "fa fa-home",
-          "target": "_setting",
+          "target": "_self",
           "child": [
             {
               "title": "科目设置",
@@ -51,19 +51,19 @@
           "title": "权限",
           "icon": "fa fa-lemon-o",
           "href": "",
-          "target": "_fly",
+          "target": "_self",
           "child": [
             {
               "title": "管理员列表",
               "href": "/page/fly/admin.html",
               "icon": "fa fa-adn",
-              "target": "_fly"
+              "target": "_self"
             },
             {
               "title": "角色管理",
               "href": "/page/fly/role.html",
               "icon": "fa fa-dashboard",
-              "target": "_fly"
+              "target": "_self"
             }
           ]
         },
