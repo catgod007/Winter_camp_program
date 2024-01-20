@@ -18,7 +18,7 @@
 
 
     <delete id="delById">
-        delete from student_info where id=#{id}
+        delete from student_info where stu_id=#{id}
     </delete>
     <delete id="delBatch">
         delete from student_info where id in (${arrStr})

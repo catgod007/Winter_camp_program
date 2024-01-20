@@ -34,8 +34,8 @@ public class StudentController {
     }
 
     @GetMapping("/delById")
-    public R  delById(Integer id){
-        return studentService.delById(id);
+    public R  delById(Integer stuId){
+        return studentService.delById(stuId);
     }
     @PostMapping("/delBatch")
     public  R delBatch( String arrStr){

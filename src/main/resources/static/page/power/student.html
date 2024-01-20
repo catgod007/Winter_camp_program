@@ -270,7 +270,7 @@
             //修改  打开新的窗口 进行信息编辑
             if (obj.event === 'edit') {
                 var index = layer.open({
-                    title: '编辑管理员',
+                    title: '编辑学生',
                     type: 1,
                     shade: 0.2,
                     maxmin:true,
@@ -286,12 +286,14 @@
                 layer.confirm('真的删除行么', function (index) {
                     console.log(index);
                     //先请求后端做删除操作
-                    $.getJSON("/student/delById", {id:data.id},
+                    $.getJSON("/student/delById", {stuId:data.stuId},
                         function(resultData){//响应成功的回调函数
                             //  code  请求状态  data 数据 msg错误消息
                             console.log(index);
                             if(resultData.code==0){
                                 layer.msg("删除成功");
+                                //页面自动刷新
+                                location.reload();
                                 // obj.del();//假删 页面刷新数据回来了
                             }else{
                                 layer.msg("删除失败,请联系管理员");
@@ -320,6 +322,8 @@
                         console.log(resultData);
                         if(resultData.code==0){
                             layer.msg("添加成功");
+                            //页面自动刷新
+                            location.reload();
                         }else{
                             layer.msg("添加失败,请联系管理员");
                         }
@@ -335,6 +339,8 @@
                         console.log(resultData);
                         if(resultData.code==0){
                             layer.msg("修改成功");
+                            //页面自动刷新
+                            location.reload();
                         }else{
                             layer.msg("修改失败,请联系管理员");
                         }
