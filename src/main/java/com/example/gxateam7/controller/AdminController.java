@@ -7,9 +7,13 @@ import com.example.gxateam7.utils.model.R;
 import com.example.gxateam7.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-    @RestController
+import javax.servlet.http.HttpServletRequest;
+import java.awt.image.MultiPixelPackedSampleModel;
+
+@RestController
     @RequestMapping("/admin")
     public class AdminController {
         //这里请求路径
@@ -59,6 +63,18 @@ import javax.annotation.Resource;
             System.out.println(arrStr);
             return adminService.delBatch(arrStr);
         }
+        @PostMapping("/changeImg")
+        public  R changeImg(@RequestPart("file")MultipartFile file, HttpServletRequest request){
+           System.out.println(file);
+           System.out.println(request.getParameter("id"));
+           return R.ok();
+        }
+
+
+
+
+
+
 
 
 

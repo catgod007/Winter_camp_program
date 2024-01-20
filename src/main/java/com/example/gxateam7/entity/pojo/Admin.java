@@ -9,6 +9,15 @@ public class Admin {
   private String sex;
   private String phone;
   private String email;
+  private String headImg;
+
+  public String getHeadImg() {
+    return headImg;
+  }
+
+  public void setHeadImg(String headImg) {
+    this.headImg = headImg;
+  }
 
   public Integer getId() {
     return id;

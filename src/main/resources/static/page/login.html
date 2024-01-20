@@ -142,8 +142,13 @@
                     // 3.没成功错误是什么?   msg
                     if(data.code==0){
                         layer.msg('登录成功', function () {
-                            window.location = 'index.html';
                             console.log(data);//
+                            //将表格数据转换成JSON格式
+                            var jsonData = JSON.stringify(data.data);
+                            //报存数据到localStorage
+                            localStorage.setItem('admin',jsonData);
+                            //跳转页面
+                            window.location = 'index.html';
                         });
                     }else{
                         layer.msg('登录失败,密码或者用户不正确');
