@@ -11,7 +11,7 @@
  Target Server Version : 50712
  File Encoding         : 65001
 
- Date: 20/01/2024 17:28:06
+ Date: 22/01/2024 23:20:15
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `admin_info`  (
   `sex` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员的性别',
   `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员的手机号码',
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员的邮箱地址',
-  `head_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '/img/a.jpg',
+  `head_img` varchar(10000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '/img/a.jpg' COMMENT '管理员头像',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'headImg' ROW_FORMAT = Dynamic;
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin_info`  (
 -- Records of admin_info
 -- ----------------------------
 INSERT INTO `admin_info` VALUES (1, 'admin1', '1234', 'Admin1', 1, '男', '17211112222', 'admin1@example.com', '/img/a.jpg');
-INSERT INTO `admin_info` VALUES (3, 'admin3', '33', 'Admin3', 3, '女', '33', 'admin3@example.com', '/img/c.jpg');
+INSERT INTO `admin_info` VALUES (3, 'admin3', '33', 'Admin3', 3, '女', '33', 'admin3@example.com', '/img/img1705936549227.gif');
 INSERT INTO `admin_info` VALUES (4, 'admin4', '1234', 'Admin4', 1, '女', '13656746856', 'admin4@example.com', '/img/a.jpg');
 INSERT INTO `admin_info` VALUES (5, '大大怪', '1234', 'Admin5', 2, '男', '15849806785', 'admin5@example.com', '/img/a.jpg');
 INSERT INTO `admin_info` VALUES (6, '花花', '1234', 'Admin6', 3, '女', '13567283726', 'admin6@example.com', '/img/a.jpg');
@@ -49,7 +49,7 @@ INSERT INTO `admin_info` VALUES (10, '菜菜捞捞', '1234', 'Admin10', 1, '男'
 INSERT INTO `admin_info` VALUES (12, '张三', '1234', 'Admin12', 3, '男', '18936726452', 'admin12@example.com', '/img/a.jpg');
 INSERT INTO `admin_info` VALUES (13, '李四', '1234', 'Admin13', 1, '女', '17728938274', 'admin13@example.com', '/img/a.jpg');
 INSERT INTO `admin_info` VALUES (14, '花花', '1234', 'Admin11', 2, '女', '13567283726', 'admin11@example.com', '/img/a.jpg');
-INSERT INTO `admin_info` VALUES (15, '测试者', '11', 'Admin11', 2, '女', '11', 'admin11@example.com', '/img/a.jpg');
+INSERT INTO `admin_info` VALUES (15, '测试者', '11', 'Admin11', 2, '女', '11', 'admin11@example.com', '/img/img1705936493203.jpg');
 INSERT INTO `admin_info` VALUES (16, '花花', '1234', 'Admin11', 2, '女', '13567283726', 'admin11@example.com', '/img/a.jpg');
 INSERT INTO `admin_info` VALUES (17, '花花', '1234', 'Admin11', 2, '女', '13567283726', 'admin11@example.com', '/img/a.jpg');
 INSERT INTO `admin_info` VALUES (18, '花花', '1234', 'Admin11', 2, '女', '13567283726', 'admin11@example.com', '/img/a.jpg');
