@@ -5,6 +5,9 @@
         insert  into admin_info(username,userpass,nickname,role_id,sex,phone,email)
             value(#{username},#{userpass},#{nickname},#{roleId},#{sex},#{phone},#{email})
     </insert>
+    <update id="changeImg">
+        update admin_info set head_img = #{path} where  id=#{id}
+    </update>
 
     <update id="update">
         update  admin_info  set

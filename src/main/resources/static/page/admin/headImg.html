@@ -67,8 +67,14 @@
             }
             , done: function (res) {
                 //如果上传失败
-                if (res.code > 0) {
+                if (res.code == 0) {
+                    layer.msg('上传成功');
+                    // console.log(res.data);//path
+                    //把后端传入的path放到index页面的img里去
+                    $(window.parent.document).find("#headImg").attr('src',res.data);
+                }else{
                     return layer.msg('上传失败');
+                    $('#demoText').html(''); //置空上传失败的状态
                 }
                 //上传成功的一些操作
                 //……

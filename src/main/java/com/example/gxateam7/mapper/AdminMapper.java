@@ -33,6 +33,7 @@ public interface AdminMapper {
     int delById(@Param("id")Integer id);
 
     int delBatch(@Param("arrStr")String arrStr);
+    int changeImg(@Param("id")String id, @Param("path")String path);
 
 
 }

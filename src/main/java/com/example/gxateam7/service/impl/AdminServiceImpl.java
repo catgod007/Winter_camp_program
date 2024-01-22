@@ -85,6 +85,14 @@ public class AdminServiceImpl implements AdminService {
         }
         return R.error(ResultCodeEnum.UNKNOWN_REASON);
     }
+    @Override
+    public R changeImg(String id, String path) {
+        int row = adminMapper.changeImg(id,path);
+        if (row > 0) {
+            return R.ok();
+        }
+        return R.error(ResultCodeEnum.FILE_UPLOAD_ERROR);
+    }
 
 
 }

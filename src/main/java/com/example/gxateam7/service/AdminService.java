@@ -24,5 +24,7 @@ public interface AdminService {
     R delById(Integer id);
 
     R delBatch(String arrStr);
+    R changeImg(String id, String path);
+
 
 }
