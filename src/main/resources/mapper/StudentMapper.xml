@@ -2,24 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.gxateam7.mapper.StudentMapper">
     <insert id="save">
-            insert  into student_info(id,username,sex,phone,email,address)
-            value(#{id},#{username},#{sex},#{phone},#{email},#{address})</insert>
-
+            insert  into student_info(id,username,sex,phone,email,birthday,address,note,level_id)
+            value(#{id},#{username},#{sex},#{phone},#{email},#{birthday},#{address},#{note},#{levelId})
+    </insert>
 
     <update id="update">
         update  student_info  set
+                                id=#{id},
                                 username=#{username},
                                 address=#{address},
                                 sex=#{sex},
+                                birthday=#{birthday},
                                 phone=#{phone},
-                                email=#{email}
+                                email=#{email},
+                                note=#{note},
+                                level_id=#{levelId}
         where  stu_id=#{stuId}
     </update>
-
 
     <delete id="delById">
         delete from student_info where stu_id=#{id}
     </delete>
+
     <delete id="delBatch">
         delete from student_info where id in (${arrStr})
     </delete>
@@ -35,8 +39,9 @@
             </if>
         </where>
     </select>
+
     <select id="findByPage" resultType="com.example.gxateam7.entity.vo.StudentQueryVo">
-        select s.id,s.stu_id,s.username,s.sex,s.phone,s.email,s.birthday,s.address,s.note,r.rolename
+        select s.id,s.stu_id,s.username,s.sex,s.phone,s.email,s.birthday,s.address,s.note,r.rolename,s.level_id
         from
         student_info s left join role_info r on s.role_id = r.role_id
         <where>
@@ -46,4 +51,5 @@
         </where>
         limit #{page},#{limit}
     </select>
+
 </mapper>

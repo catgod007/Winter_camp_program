@@ -1,10 +1,8 @@
 package com.example.gxateam7.mapper;
 
 import com.example.gxateam7.entity.dto.StudentQueryDto;
-import com.example.gxateam7.entity.pojo.Student;
 
-import com.example.gxateam7.entity.pojo.Studenthhh;
-import com.example.gxateam7.entity.pojo.Studentint;
+import com.example.gxateam7.entity.pojo.Student;
 import com.example.gxateam7.entity.vo.StudentQueryVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -24,9 +22,9 @@ public interface StudentMapper {
 
     public List<StudentQueryVo> findByPage(StudentQueryDto queryDto) ;
 
-    int save(Studentint student);
+    int save(Student student);
 
-    int update(Studenthhh student);
+    int update(Student student);
 
     int delById(@Param("id")Integer id);
 

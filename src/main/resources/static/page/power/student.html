@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>管理员</title>
+    <title>学生管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -50,9 +50,15 @@
             <form class="layui-form"  lay-filter="student-filter"  >
                 <input  type="hidden" value="" name="stuId">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">学生名称</label>
+                    <label class="layui-form-label">姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" placeholder="请输入名称" value="" name="username" class="layui-input">
+                        <input type="text" placeholder="请输入学生姓名" value="" name="username" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学号</label>
+                    <div class="layui-input-block">
+                        <input type="text" placeholder="请输入学生学号" value="" name="id" class="layui-input">
                     </div>
                 </div>
 <!--                <div class="layui-form-item">-->
@@ -69,23 +75,56 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">学生电话</label>
+                    <label class="layui-form-label">电话</label>
                     <div class="layui-input-block">
-                        <input type="text" placeholder="请输入电话" value="" name="phone" class="layui-input">
+                        <input type="text" placeholder="请输入学生电话" value="" name="phone" class="layui-input">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">学生邮箱</label>
+                    <label class="layui-form-label">邮箱</label>
                     <div class="layui-input-block">
-                        <input type="text" placeholder="请输入邮箱" value="" name="email" class="layui-input">
+                        <input type="text" placeholder="请输入学生邮箱" value="" name="email" class="layui-input">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">学生地址</label>
+<!--                    <div class="layui-inline">-->
+                        <label class="layui-form-label">出生日期</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="birthday" id="date" placeholder="请选择学生出生日期" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+<!--                    <div class="layui-inline">-->
+<!--                        <label class="layui-form-label">行内表单</label>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <input type="text" name="number" autocomplete="off" class="layui-input">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">地址</label>
                     <div class="layui-input-block">
-                        <input type="text" placeholder="请输入地址" value="" name="address" class="layui-input">
+                        <input type="text" placeholder="请输入学生地址" value="" name="address" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">入学年份</label>
+                    <div class="layui-input-block">
+                        <input type="text" placeholder="请输入学生入学年份" value="" name="levelId" class="layui-input">
+                    </div>
+                </div>
+<!--                <div class="layui-form-item">-->
+<!--                    <label class="layui-form-label">学生备注</label>-->
+<!--                    <div class="layui-input-block">-->
+<!--                        <input type="text" placeholder="请输入学生备注" value="" name="note" class="layui-input">-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入学生备注"  name="note" class="layui-textarea"></textarea>
                     </div>
                 </div>
 
@@ -94,8 +133,6 @@
                         <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
                     </div>
                 </div>
-
-
             </form>
             <!--
                   <div class="layui-upload-drag" id="test10">
@@ -113,16 +150,24 @@
                   </div>
               </form>-->
         </div>
+
     </div>
 </div>
 <script src="/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
 <script>
-    layui.use(['form', 'table','upload'], function () {
+
+    layui.use(['form', 'table','upload', 'laydate'], function () {
         var $ = layui.jquery,
             form = layui.form,
             upload=layui.upload,
-            table = layui.table;
+            table = layui.table,
+            laydate = layui.laydate;
         var index;
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+
         //查询父级
         $.getJSON("/role/findByParentValue", function(resultData){//响应成功的回调函数
             //  code  请求状态  data 数据 msg错误消息
@@ -140,9 +185,6 @@
                 $("#roleId").html(option_arr);
                 //这是layui的下拉框 有样式修饰所有需要刷新
                 form.render('select'); //渲染 select 选择框
-                //<option value="deptId">deptName</option>
-                ///<option value="2">王麻子</option>
-                // <option value="3">陈鑫</option>
 
             }else{
                 layer.msg(resultData.msg);
@@ -158,22 +200,22 @@
                 layEvent: 'LAYTABLE_TIPS',
                 icon: 'layui-icon-tips'
             }],
-            //
+            //levelId
             cols: [[
-                {type: "checkbox", width: 50},
-                {field: 'id', width:140, title: '学生id'},
-                {field: 'username', width: 120, title: '学生姓名'},
-                {field: 'sex', width: 140, title: '学生性别'},
+                {type: "numbers", width: 50},
+                {field: 'id', width:100, title: '学号',sort:true},
+                {field: 'username', width: 100, title: '姓名'},
+                {field: 'sex', width: 40, title: '性别'},
                 {field: 'phone', title: '电话号码', width: 120},
                 {field: 'email', title: '邮箱', width: 120},
-                {field: 'birthday', width: 140, title: '生日'},
+                {field: 'birthday', width: 100, title: '出生日期'},
                 {field: 'address', title: '地址', width: 120},
                 {field: 'note', title: '备注', width: 120},
-                //{field: 'rolename', title: '角色名称', width: 120},
-                //{field: 'status', title: '状态', width: 120},
-                //{field: 'level', title: '入学年份', width: 120},
+                // {field: 'rolename', title: '角色名称', width: 120},
+                {field: 'levelId', title: '入学年份', width: 120,sort:true},
                 //{field: 'createtime', title: '注册时间', width: 120},
                 //{field: 'role_id', title: '角色ID', width: 120},
+                // {field: 'status', title: '状态', width: 80},
                 {title: '操作', minWidth: 140, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10,50, 100],
@@ -206,7 +248,7 @@
                 //把当前隐藏的div进行窗口展示
                 index = layer.open({
                     url:"/student/save",
-                    title: '添加管理员',
+                    title: '添加学生',
                     type: 1,
                     shade: 0.2,
                     area: ['600px', '500px'],

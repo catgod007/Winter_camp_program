@@ -3,8 +3,6 @@ package com.example.gxateam7.service;
 import com.example.gxateam7.entity.dto.StudentQueryDto;
 
 import com.example.gxateam7.entity.pojo.Student;
-import com.example.gxateam7.entity.pojo.Studenthhh;
-import com.example.gxateam7.entity.pojo.Studentint;
 import com.example.gxateam7.utils.model.R;
 
 /**
@@ -15,13 +13,11 @@ import com.example.gxateam7.utils.model.R;
  * Description:
  */
 public interface StudentService {
-
-
     R findByPage(StudentQueryDto queryDto);
 
-    R save(Studentint student);
+    R save(Student student);
 
-    R update(Studenthhh student);
+    R update(Student student);
 
     R delById(Integer id);
 
