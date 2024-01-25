@@ -8,7 +8,6 @@ public class Student {
   private String username;
   private Integer id;
   private String sex;
-
   private String birthday;//date类型在获取时会获取到分秒毫秒
   private String phone;
   private String email;
