@@ -3,6 +3,7 @@ package com.example.gxateam7.mapper;
 import com.example.gxateam7.entity.dto.StudentQueryDto;
 
 import com.example.gxateam7.entity.pojo.Student;
+import com.example.gxateam7.entity.vo.StudentExcelVo;
 import com.example.gxateam7.entity.vo.StudentQueryVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -29,5 +30,7 @@ public interface StudentMapper {
     int delById(@Param("id")Integer id);
 
     int delBatch(@Param("arrStr")String arrStr);
+
+    List<StudentExcelVo> export();
 }
 

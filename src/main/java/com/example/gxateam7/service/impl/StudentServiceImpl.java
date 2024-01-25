@@ -4,6 +4,7 @@ import com.example.gxateam7.entity.dto.StudentQueryDto;
 
 
 import com.example.gxateam7.entity.pojo.Student;
+import com.example.gxateam7.entity.vo.StudentExcelVo;
 import com.example.gxateam7.entity.vo.StudentQueryVo;
 import com.example.gxateam7.mapper.StudentMapper;
 import com.example.gxateam7.service.StudentService;
@@ -74,5 +75,10 @@ public class StudentServiceImpl implements StudentService {
                 return R.ok();
             }
             return R.error(ResultCodeEnum.UNKNOWN_REASON);
+    }
+
+    @Override
+    public List<StudentExcelVo> export() {
+        return studentMapper.export();
     }
 }

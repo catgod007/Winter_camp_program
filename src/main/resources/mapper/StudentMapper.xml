@@ -51,5 +51,10 @@
         </where>
         limit #{page},#{limit}
     </select>
+    <select id="export" resultType="com.example.gxateam7.entity.vo.StudentExcelVo">
+        select s.id,s.username,s.sex,s.phone,s.email,s.birthday,s.address,r.rolename
+        from
+            student_info s left join role_info r on s.role_id = r.role_id
+    </select>
 
 </mapper>

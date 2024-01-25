@@ -3,7 +3,10 @@ package com.example.gxateam7.service;
 import com.example.gxateam7.entity.dto.StudentQueryDto;
 
 import com.example.gxateam7.entity.pojo.Student;
+import com.example.gxateam7.entity.vo.StudentExcelVo;
 import com.example.gxateam7.utils.model.R;
+
+import java.util.List;
 
 /**
  * 万事顺意
@@ -22,4 +25,6 @@ public interface StudentService {
     R delById(Integer id);
 
     R delBatch(String arrStr);
+    //查询导出的数据
+    List<StudentExcelVo> export();
 }
