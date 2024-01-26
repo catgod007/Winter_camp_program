@@ -5,6 +5,10 @@
             insert  into student_info(id,username,sex,phone,email,birthday,address,note,level_id)
             value(#{id},#{username},#{sex},#{phone},#{email},#{birthday},#{address},#{note},#{levelId})
     </insert>
+    <insert id="add">
+        insert  into student_info(id,username,phone,email)
+            value(#{id},#{username},#{phone},#{email})
+    </insert>
 
     <update id="update">
         update  student_info  set

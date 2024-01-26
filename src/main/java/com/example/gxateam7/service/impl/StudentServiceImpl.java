@@ -1,5 +1,6 @@
 package com.example.gxateam7.service.impl;
 
+import com.example.gxateam7.entity.dto.StudentExcelDto;
 import com.example.gxateam7.entity.dto.StudentQueryDto;
 
 
@@ -80,5 +81,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentExcelVo> export() {
         return studentMapper.export();
+    }
+
+    @Override
+    public void add(StudentExcelDto studentExcelDto) {
+       studentMapper.add(studentExcelDto);
     }
 }

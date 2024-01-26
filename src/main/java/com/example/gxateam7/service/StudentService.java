@@ -1,5 +1,6 @@
 package com.example.gxateam7.service;
 
+import com.example.gxateam7.entity.dto.StudentExcelDto;
 import com.example.gxateam7.entity.dto.StudentQueryDto;
 
 import com.example.gxateam7.entity.pojo.Student;
@@ -27,4 +28,6 @@ public interface StudentService {
     R delBatch(String arrStr);
     //查询导出的数据
     List<StudentExcelVo> export();
+
+    void add(StudentExcelDto studentExcelDto);
 }

@@ -1,5 +1,6 @@
 package com.example.gxateam7.mapper;
 
+import com.example.gxateam7.entity.dto.StudentExcelDto;
 import com.example.gxateam7.entity.dto.StudentQueryDto;
 
 import com.example.gxateam7.entity.pojo.Student;
@@ -32,5 +33,7 @@ public interface StudentMapper {
     int delBatch(@Param("arrStr")String arrStr);
 
     List<StudentExcelVo> export();
+
+    void add(StudentExcelDto studentExcelDto);
 }
 

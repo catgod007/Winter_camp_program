@@ -38,7 +38,7 @@
                     <i class="layui-icon layui-icon-add-circle"></i>添加用户</button>
                 <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="down">
                     <i class="layui-icon layui-icon-add-circle"></i>批量导出</button>
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" id="test3" lay-event="batch">
                     <i class="layui-icon layui-icon-add-circle"></i>批量导入</button>
             </div>
         </script>
@@ -209,7 +209,7 @@
                 {type: "numbers", width: 50},
                 {field: 'id', width:100, title: '学号',sort:true},
                 {field: 'username', width: 100, title: '姓名'},
-                {field: 'sex', width: 40, title: '性别'},
+                {field: 'sex', width: 60, title: '性别'},
                 {field: 'phone', title: '电话号码', width: 120},
                 {field: 'email', title: '邮箱', width: 120},
                 {field: 'birthday', width: 100, title: '出生日期'},
@@ -302,6 +302,25 @@
             //             }, "json");
             //     }
             // }
+        });
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#test3'
+            ,url: '/student/import' //此处配置你自己的上传接口即可
+            ,exts: 'xls|xlsx' //只允许上传压缩文件 excel
+            ,accept: 'file' //普通文件
+            ,field: "studentInfo"
+            ,done: function(resultData){
+                if(resultData.code == 0){
+                    layer.msg('上传成功');
+                    console.log(resultData);
+                }else{
+                    layer.msg(resultData.msg);
+                }
+            }
+            ,error: function (){
+                layer.msg("调用错误");
+            }
         });
         //监听表格里面的工具
         table.on('tool(currentTableFilter)', function (obj) {

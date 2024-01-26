@@ -1,12 +1,14 @@
 package com.example.gxateam7.controller;
 
 import com.alibaba.excel.EasyExcel;
+import com.example.gxateam7.entity.dto.StudentExcelDto;
 import com.example.gxateam7.entity.dto.StudentQueryDto;
 import com.example.gxateam7.entity.pojo.Student;
 import com.example.gxateam7.entity.vo.StudentExcelVo;
 import com.example.gxateam7.service.StudentService;
 import com.example.gxateam7.utils.model.R;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -49,7 +51,6 @@ public class StudentController {
     /**
      * EasyExcel导出
      */
-
         @GetMapping("/export")//response响应给前端文件，需要设置响应头（告诉浏览器响应的是文件）
         public void exportStudentExcel(HttpServletResponse response) {
             try {
@@ -68,17 +69,51 @@ public class StudentController {
             }
         }
 
-//        //读取用户列表数据
-//
-//        private List<UserDO> getUserList() throws IOException {
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            ClassPathResource classPathResource = new ClassPathResource("mock/users.json");
-//            InputStream inputStream = classPathResource.getInputStream();
-//            return objectMapper.readValue(inputStream, new TypeReference<List<UserDO>>() {
-//            });
-//        }
+    /**
+     * EasyExcel导入
+     */
+        @PostMapping("/import")
+        public R importStudentExcel(@RequestPart("studentInfo") MultipartFile file) {
+            try {
+                //根据请求流自动解析成List<StudentDto>
+                List<StudentExcelDto> list = EasyExcel.read(file.getInputStream())
+                        .head(StudentExcelDto.class)
+                        .sheet()
+                        .doReadSync();
+                for(StudentExcelDto studentExcelDto : list){
+                    System.out.println(studentExcelDto);
+                    //添加
+                    studentService.add(studentExcelDto);
+                }
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
+            return R.ok();
+        }
+
 
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
