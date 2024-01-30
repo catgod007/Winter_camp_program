@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>角色人数统计</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
+    <style>
+        .top-panel {
+            border: 1px solid #eceff9;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .top-panel > .layui-card-body{
+            height: 60px;
+        }
+        .top-panel-number{
+            line-height:60px;
+            font-size: 30px;
+            border-right:1px solid #eceff9;
+        }
+        .top-panel-tips{
+            line-height:30px;
+            font-size: 12px
+        }
+    </style>
+</head>
+<body>
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<!---统计不同角色的人数 -->
+<div id="main" style="width: 600px;height:400px;"></div>
+
+<script src="/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['layer', 'echarts'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            echarts = layui.echarts;
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        option = {
+            backgroundColor: '#2c343c',
+            title: {
+                text: '角色人数统计图',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                    color: '#ccc'
+                }
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            visualMap: {
+                show: false,
+                min: 80,
+                max: 600,
+                inRange: {
+                    colorLightness: [0, 1]
+                }
+            },
+            series: [
+                {
+                    name: '角色人数统计图',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '50%'],
+                    data: [],
+                    roseType: 'radius',
+                    label: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    labelLine: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        },
+                        smooth: 0.2,
+                        length: 10,
+                        length2: 20
+                    },
+                    itemStyle: {
+                        color: '#c23531',
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    },
+                    animationType: 'scale',
+                    animationEasing: 'elasticOut',
+                    animationDelay: function (idx) {
+                        return Math.random() * 200;
+                    }
+                }
+            ]
+        };
+        //请求后端数据ajax
+        $.getJSON("/statistics/findPie","",function (resultData) {//响应成功的回调函数
+           if(resultData.code == 0){
+               option.series[0].data=resultData.data;
+           }else {
+               layer.msg(resultData.msg);
+           }
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+
+        })
+
+    })
+
+</script>
+</body>
+</html>

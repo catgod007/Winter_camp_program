@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.gxateam7.mapper.StatisticsMapper">
+
+    <select id="findPie" resultType="com.example.gxateam7.entity.vo.PieDataVo">
+        select r.rolename as name,count(a.role_id) as value from
+            role_info r left join admin_info a on r.role_id = a.role_id
+        group by r.rolename;
+    </select>
+    <select id="findBar" resultType="com.example.gxateam7.entity.vo.BarDataVo">
+        select
+            r.rolename,sum(case when a.sex='男' then 1 else 0 end) as man,
+            sum(case when a.sex='女' then 1 else 0 end) as woman
+        from role_info r left join admin_info a on a.role_id=r.role_id
+        group by r.rolename;
+    </select>
+
+</mapper>

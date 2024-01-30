@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--外部引入echarts -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="/lib/echarts.js"></script>
+    <title>测试统计页面</title>
+</head>
+<body>
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '专业人数比例统计图'
+        },
+        tooltip: {},
+        legend: {
+            data: ['专业人数']
+        },
+        xAxis: {
+            data: ['云计算','大数据','区块链','计算机网络','移动应用开发','软件工程']
+        },
+        yAxis: {},
+        series: [
+            {
+                name: '人数',
+                type: 'bar',
+                data: [50, 20, 36, 15, 10, 25]
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
