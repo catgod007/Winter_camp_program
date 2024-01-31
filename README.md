@@ -5,4 +5,6 @@
 
 #### 软件架构
 layui+springboot+mybaites
+#### 所需的测试数据
+/src/main/resources/static/lib
 
